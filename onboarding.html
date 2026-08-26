@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CreoHold - Onboarding Flow</title>
-    <!-- Tailwind CSS CDN matching index.html -->
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons matching index.html -->
+
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts Inter matching user directive -->
+
+    <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* Base Typography */
         * {
             font-family: 'Inter', sans-serif;
         }
         
-        /* Frame Background Gradient: linear-gradient(180deg, #00D285 0%, #006C44 100%) */
+        /* Background Gradient matching CreoHold brand identity: #00D285 to #006C44 */
         .onboarding-gradient-background {
             background: linear-gradient(180deg, #00D285 0%, #006C44 100%);
         }
@@ -54,7 +58,7 @@
 </head>
 <body id="onboardingApplicationBodyCanvas" class="bg-[#1a1a1a] min-h-[100dvh] w-full flex items-center justify-center p-0 sm:p-6 overflow-x-hidden select-none">
 
-    <!-- MAIN FRAME: fullscreen on mobile, "phone frame" look only on sm and up -->
+    <!-- MAIN FRAME: Fullscreen on mobile devices, framed 420px mobile viewport mockup on desktop screens -->
     <main id="onboardingMobileDeviceViewportFrame" class="w-full max-w-full sm:max-w-[420px] h-[100dvh] sm:h-[720px] min-h-[100dvh] sm:min-h-[720px] onboarding-gradient-background rounded-none sm:rounded-[44px] shadow-none sm:shadow-2xl overflow-hidden relative flex flex-col justify-between border-0 sm:border-4 sm:border-gray-800/40 my-auto">
         
         <!-- Sliding Track Container for 3 Screens -->
@@ -63,17 +67,17 @@
             <!-- ==================== SCREEN 1: ONE WALLET, EVERY CURRENCY ==================== -->
             <section id="onboardingScreenOneWalletIntroContainer" class="w-full shrink-0 min-w-[100%] h-full min-h-[100dvh] sm:min-h-[720px] flex flex-col justify-between p-6 sm:p-7 relative">
                 
-                <!-- Top Navigation Header -->
+                <!-- Top Navigation Header: Hamburger Menu, Segmented Progress Indicators & Logo -->
                 <header id="onboardingSlideOneTopHeader" class="w-full pt-2 safe-area-header">
                     <!-- Row 1: Hamburger Menu Icon (Top Left) -->
-                    <div id="onboardingSlideOneHamburgerRow" class="flex items-center justify-start mb-3">
+                    <div id="onboardingSlideOneHamburgerRow" class="flex items-center justify-start mb-2.5">
                         <div id="onboardingSlideOneHamburgerMenuIcon" class="text-white p-1 pointer-events-none select-none">
                             <i class="fas fa-bars text-lg sm:text-xl"></i>
                         </div>
                     </div>
 
-                    <!-- Row 2: Segmented Progress Bar (Under Hamburger) + Skip Link -->
-                    <div id="onboardingSlideOneProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-6">
+                    <!-- Row 2: Segmented Progress Bar (3 Clickable Segments) + Skip Link -->
+                    <div id="onboardingSlideOneProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-5">
                         <!-- Progress Bar Container -->
                         <div id="onboardingSlideOneProgressBarSegmentGroup" class="flex items-center gap-2 flex-1">
                             <!-- Segment 1: Active (Solid White) -->
@@ -90,38 +94,38 @@
                         </button>
                     </div>
 
-                    <!-- Row 3: Centered Logo / Wordmark (Prominent Icon + CreoHold Text) -->
-                    <div id="onboardingSlideOneLogoWrapper" class="w-full flex items-center justify-center gap-2.5 my-2">
-                        <img id="onboardingSlideOneCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-7 w-7 sm:h-8 sm:w-8 object-contain filter drop-shadow-sm">
+                    <!-- Row 3: Centered CreoHold Logo & Wordmark -->
+                    <div id="onboardingSlideOneLogoWrapper" class="w-full flex items-center justify-center gap-2 my-1">
+                        <img id="onboardingSlideOneCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-sm">
                         <span id="onboardingSlideOneCreoHoldLogoText" class="text-white font-bold text-xl sm:text-2xl tracking-tight">CreoHold</span>
                     </div>
                 </header>
 
-                <!-- Center Hero Illustration & Messaging Section -->
-                <div id="onboardingSlideOneMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-4 sm:py-6 space-y-6 sm:space-y-8 my-auto">
-                    <!-- 3D Graphic Illustration (Sized to match reference ~165px) -->
-                    <div id="onboardingSlideOneIllustrationFrame" class="w-full flex items-center justify-center my-1">
-                        <img id="onboardingSlideOneWalletIntroIcon" src="wallet-icon.png.png" onerror="this.onerror=null; this.src='wallet-icon.png.png';" alt="CreoHold Multi-Currency 3D Digital Wallet" class="w-[160px] sm:w-[175px] h-[160px] sm:h-[175px] object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300">
+                <!-- Center Hero Illustration & Messaging Content Section -->
+                <div id="onboardingSlideOneMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-3 sm:py-5 space-y-5 sm:space-y-6 my-auto">
+                    <!-- Prominent 3D Hero Graphic Illustration (Scaled up to match reference design scale) -->
+                    <div id="onboardingSlideOneIllustrationFrame" class="w-full flex items-center justify-center my-2">
+                        <img id="onboardingSlideOneWalletIntroIcon" src="wallet-icon.png.png" onerror="this.onerror=null; this.src='wallet-icon.png.png';" alt="CreoHold Multi-Currency 3D Digital Wallet" class="w-[220px] sm:w-[250px] max-w-[70vw] h-auto object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300">
                     </div>
 
-                    <!-- Typography Group tightly paired to match Figma reference layout -->
-                    <div class="space-y-3 sm:space-y-4 max-w-[300px] mx-auto">
-                        <!-- Headline (2 Lines) -->
-                        <h1 id="onboardingSlideOneHeadlineTitleText" class="text-white text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight">
+                    <!-- Typography Group: Headline and Supporting Description -->
+                    <div class="space-y-3 sm:space-y-4 max-w-[290px] mx-auto">
+                        <!-- Headline Title -->
+                        <h1 id="onboardingSlideOneHeadlineTitleText" class="text-white text-2xl sm:text-[28px] font-extrabold leading-tight tracking-tight">
                             One Wallet,<br>Every currency
                         </h1>
 
                         <!-- Supporting Description Text -->
-                        <p id="onboardingSlideOneSupportingDescriptionText" class="text-white/90 text-xs sm:text-sm font-light max-w-[270px] leading-relaxed mx-auto">
+                        <p id="onboardingSlideOneSupportingDescriptionText" class="text-white/90 text-xs sm:text-[13.5px] font-normal max-w-[275px] leading-relaxed mx-auto">
                             Hold USD, BTC, ETH and USDT side by side. no juggling apps.
                         </p>
                     </div>
                 </div>
 
-                <!-- Bottom CTA Action Button Footer Pinned to Bottom of Mobile Screen -->
+                <!-- Bottom CTA Action Button Footer (Pinned to bottom of mobile viewport) -->
                 <footer id="onboardingSlideOneBottomActionFooter" class="w-full pb-8 sm:pb-10 pt-2 mt-auto safe-area-footer">
-                    <!-- Solid Target UI Green Button (#21b663) -->
-                    <button id="onboardingSlideOneContinueActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-4 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center focus:outline-none">
+                    <!-- Solid Brand Green Action Button (#21b663) -->
+                    <button id="onboardingSlideOneContinueActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-3.5 sm:py-4 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center focus:outline-none">
                         Continue
                     </button>
                 </footer>
@@ -134,14 +138,14 @@
                 <!-- Top Navigation Header -->
                 <header id="onboardingSlideTwoTopHeader" class="w-full pt-2 safe-area-header">
                     <!-- Row 1: Hamburger Menu Icon (Top Left) -->
-                    <div id="onboardingSlideTwoHamburgerRow" class="flex items-center justify-start mb-3">
+                    <div id="onboardingSlideTwoHamburgerRow" class="flex items-center justify-start mb-2.5">
                         <div id="onboardingSlideTwoHamburgerMenuIcon" class="text-white p-1 pointer-events-none select-none">
                             <i class="fas fa-bars text-lg sm:text-xl"></i>
                         </div>
                     </div>
 
-                    <!-- Row 2: Segmented Progress Bar (Under Hamburger) + Skip Link -->
-                    <div id="onboardingSlideTwoProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-6">
+                    <!-- Row 2: Segmented Progress Bar + Skip Link -->
+                    <div id="onboardingSlideTwoProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-5">
                         <!-- Progress Bar Container -->
                         <div id="onboardingSlideTwoProgressBarSegmentGroup" class="flex items-center gap-2 flex-1">
                             <!-- Segment 1: Inactive (White 30% Opacity) -->
@@ -158,38 +162,38 @@
                         </button>
                     </div>
 
-                    <!-- Row 3: Centered Logo / Wordmark (Prominent Icon + CreoHold Text) -->
-                    <div id="onboardingSlideTwoLogoWrapper" class="w-full flex items-center justify-center gap-2.5 my-2">
-                        <img id="onboardingSlideTwoCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-7 w-7 sm:h-8 sm:w-8 object-contain filter drop-shadow-sm">
+                    <!-- Row 3: Centered CreoHold Logo & Wordmark -->
+                    <div id="onboardingSlideTwoLogoWrapper" class="w-full flex items-center justify-center gap-2 my-1">
+                        <img id="onboardingSlideTwoCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-sm">
                         <span id="onboardingSlideTwoCreoHoldLogoText" class="text-white font-bold text-xl sm:text-2xl tracking-tight">CreoHold</span>
                     </div>
                 </header>
 
-                <!-- Center Hero Illustration & Messaging Section -->
-                <div id="onboardingSlideTwoMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-4 sm:py-6 space-y-6 sm:space-y-8 my-auto">
-                    <!-- 3D Graphic Illustration (Sized to match reference ~165px) -->
-                    <div id="onboardingSlideTwoIllustrationFrame" class="w-full flex items-center justify-center my-1">
-                        <img id="onboardingSlideTwoSwapRatesIcon" src="swap-coins-icon.png" alt="Crypto and cash swap coins" class="w-[160px] sm:w-[175px] h-[160px] sm:h-[175px] object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl">
+                <!-- Center Hero Illustration & Messaging Content Section -->
+                <div id="onboardingSlideTwoMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-3 sm:py-5 space-y-5 sm:space-y-6 my-auto">
+                    <!-- Prominent 3D Hero Graphic Illustration (Scaled up to match reference design scale) -->
+                    <div id="onboardingSlideTwoIllustrationFrame" class="w-full flex items-center justify-center my-2">
+                        <img id="onboardingSlideTwoSwapRatesIcon" src="swap-coins-icon.png" alt="Crypto and cash swap coins" class="w-[220px] sm:w-[250px] max-w-[70vw] h-auto object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl">
                     </div>
 
-                    <!-- Typography Group tightly paired to match Figma reference layout -->
-                    <div class="space-y-3 sm:space-y-4 max-w-[300px] mx-auto">
-                        <!-- Headline (2 Lines) -->
-                        <h1 id="onboardingSlideTwoHeadlineTitleText" class="text-white text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight">
+                    <!-- Typography Group: Headline and Supporting Description -->
+                    <div class="space-y-3 sm:space-y-4 max-w-[290px] mx-auto">
+                        <!-- Headline Title -->
+                        <h1 id="onboardingSlideTwoHeadlineTitleText" class="text-white text-2xl sm:text-[28px] font-extrabold leading-tight tracking-tight">
                             Swap at live<br>Market Rates
                         </h1>
 
                         <!-- Supporting Description Text -->
-                        <p id="onboardingSlideTwoSupportingDescriptionText" class="text-white/90 text-xs sm:text-sm font-light max-w-[270px] leading-relaxed mx-auto">
+                        <p id="onboardingSlideTwoSupportingDescriptionText" class="text-white/90 text-xs sm:text-[13.5px] font-normal max-w-[275px] leading-relaxed mx-auto">
                             Convert between crypto and cash in seconds, with the rate locked before you confirm.
                         </p>
                     </div>
                 </div>
 
-                <!-- Bottom CTA Action Button Footer Pinned to Bottom of Mobile Screen -->
+                <!-- Bottom CTA Action Button Footer (Pinned to bottom of mobile viewport) -->
                 <footer id="onboardingSlideTwoBottomActionFooter" class="w-full pb-8 sm:pb-10 pt-2 mt-auto safe-area-footer">
-                    <!-- Solid Target UI Green Button (#21b663) -->
-                    <button id="onboardingSlideTwoContinueActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-4 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center focus:outline-none">
+                    <!-- Solid Brand Green Action Button (#21b663) -->
+                    <button id="onboardingSlideTwoContinueActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-3.5 sm:py-4 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center focus:outline-none">
                         Continue
                     </button>
                 </footer>
@@ -202,14 +206,14 @@
                 <!-- Top Navigation Header -->
                 <header id="onboardingSlideThreeTopHeader" class="w-full pt-2 safe-area-header">
                     <!-- Row 1: Hamburger Menu Icon (Top Left) -->
-                    <div id="onboardingSlideThreeHamburgerRow" class="flex items-center justify-start mb-3">
+                    <div id="onboardingSlideThreeHamburgerRow" class="flex items-center justify-start mb-2.5">
                         <div id="onboardingSlideThreeHamburgerMenuIcon" class="text-white p-1 pointer-events-none select-none">
                             <i class="fas fa-bars text-lg sm:text-xl"></i>
                         </div>
                     </div>
 
-                    <!-- Row 2: Segmented Progress Bar (Under Hamburger) + Skip Link -->
-                    <div id="onboardingSlideThreeProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-6">
+                    <!-- Row 2: Segmented Progress Bar + Skip Link -->
+                    <div id="onboardingSlideThreeProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-5">
                         <!-- Progress Bar Container -->
                         <div id="onboardingSlideThreeProgressBarSegmentGroup" class="flex items-center gap-2 flex-1">
                             <!-- Segment 1: Inactive (White 30% Opacity) -->
@@ -226,38 +230,38 @@
                         </button>
                     </div>
 
-                    <!-- Row 3: Centered Logo / Wordmark (Prominent Icon + CreoHold Text) -->
-                    <div id="onboardingSlideThreeLogoWrapper" class="w-full flex items-center justify-center gap-2.5 my-2">
-                        <img id="onboardingSlideThreeCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-7 w-7 sm:h-8 sm:w-8 object-contain filter drop-shadow-sm">
+                    <!-- Row 3: Centered CreoHold Logo & Wordmark -->
+                    <div id="onboardingSlideThreeLogoWrapper" class="w-full flex items-center justify-center gap-2 my-1">
+                        <img id="onboardingSlideThreeCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-sm">
                         <span id="onboardingSlideThreeCreoHoldLogoText" class="text-white font-bold text-xl sm:text-2xl tracking-tight">CreoHold</span>
                     </div>
                 </header>
 
-                <!-- Center Hero Illustration & Messaging Section -->
-                <div id="onboardingSlideThreeMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-4 sm:py-6 space-y-6 sm:space-y-8 my-auto">
-                    <!-- 3D Graphic Illustration (Sized to match reference ~165px) -->
-                    <div id="onboardingSlideThreeIllustrationFrame" class="w-full flex items-center justify-center my-1">
-                        <img id="onboardingScreenThreeShieldIcon" src="shield-check-icon.png" alt="Security shield with checkmark" class="w-[160px] sm:w-[175px] h-[160px] sm:h-[175px] object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl">
+                <!-- Center Hero Illustration & Messaging Content Section -->
+                <div id="onboardingSlideThreeMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-3 sm:py-5 space-y-5 sm:space-y-6 my-auto">
+                    <!-- Prominent 3D Hero Graphic Illustration (Scaled up to match reference design scale) -->
+                    <div id="onboardingSlideThreeIllustrationFrame" class="w-full flex items-center justify-center my-2">
+                        <img id="onboardingScreenThreeShieldIcon" src="shield-check-icon.png" alt="Security shield with checkmark" class="w-[220px] sm:w-[250px] max-w-[70vw] h-auto object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl">
                     </div>
 
-                    <!-- Typography Group tightly paired to match Figma reference layout -->
-                    <div class="space-y-3 sm:space-y-4 max-w-[300px] mx-auto">
-                        <!-- Headline (2 Lines) -->
-                        <h1 id="onboardingSlideThreeHeadlineTitleText" class="text-white text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight">
+                    <!-- Typography Group: Headline and Supporting Description -->
+                    <div class="space-y-3 sm:space-y-4 max-w-[290px] mx-auto">
+                        <!-- Headline Title -->
+                        <h1 id="onboardingSlideThreeHeadlineTitleText" class="text-white text-2xl sm:text-[28px] font-extrabold leading-tight tracking-tight">
                             Build to protect<br>what you hold
                         </h1>
 
                         <!-- Supporting Description Text -->
-                        <p id="onboardingSlideThreeSupportingDescriptionText" class="text-white/90 text-xs sm:text-sm font-light max-w-[270px] leading-relaxed mx-auto">
+                        <p id="onboardingSlideThreeSupportingDescriptionText" class="text-white/90 text-xs sm:text-[13.5px] font-normal max-w-[275px] leading-relaxed mx-auto">
                             Biometric login, 2FA, and device-level encryption on every transaction.
                         </p>
                     </div>
                 </div>
 
-                <!-- Bottom CTA Action Button Footer Pinned to Bottom of Mobile Screen -->
+                <!-- Bottom CTA Action Button Footer (Pinned to bottom of mobile viewport) -->
                 <footer id="onboardingSlideThreeBottomActionFooter" class="w-full pb-8 sm:pb-10 pt-2 mt-auto safe-area-footer">
-                    <!-- Solid Target UI Green Button (#21b663) -->
-                    <button id="onboardingSlideThreeGetStartedActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-4 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center focus:outline-none">
+                    <!-- Solid Brand Green Action Button (#21b663) -->
+                    <button id="onboardingSlideThreeGetStartedActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-3.5 sm:py-4 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center focus:outline-none">
                         Get Started
                     </button>
                 </footer>
@@ -267,7 +271,7 @@
 
     </main>
 
-    <!-- Vanilla Javascript Logic for Slide Toggle & Clickable Progress Bar Navigation -->
+    <!-- Vanilla Javascript Logic for Slide Navigation, Clickable Progress Bar & Touch Swipe -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             
@@ -340,7 +344,7 @@
                 currentActiveSlideIndex = targetSlideIndex;
                 const percentageTranslateOffset = -(targetSlideIndex * 100);
                 
-                // Translate the track horizontally
+                // Translate the track horizontally with smooth transition
                 onboardingCarouselSlidesTrack.style.transform = `translateX(${percentageTranslateOffset}%)`;
 
                 // Update active/inactive state of progress bar segments across all screen headers
@@ -354,7 +358,6 @@
                 if (currentActiveSlideIndex < totalOnboardingSlidesCount - 1) {
                     navigateToOnboardingSlideIndex(currentActiveSlideIndex + 1);
                 } else {
-                    // Final slide reached - custom action placeholder
                     console.log('Onboarding flow completed at Screen 3.');
                 }
             }
@@ -392,7 +395,6 @@
             }
             if (onboardingSlideThreeGetStartedActionButton) {
                 onboardingSlideThreeGetStartedActionButton.addEventListener('click', function () {
-                    // Custom completion handler
                     console.log('Get Started button clicked.');
                 });
             }
@@ -416,12 +418,10 @@
                     if (currentActiveSlideIndex > 0) {
                         navigateToOnboardingSlideIndex(currentActiveSlideIndex - 1);
                     }
-                } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-                    e.preventDefault();
                 }
             });
 
-            // Touch Swipe Gesture Support
+            // Touch Swipe Gesture Support for Native Mobile Navigation
             let touchStartingPositionX = 0;
             let touchEndingPositionX = 0;
 
@@ -436,15 +436,15 @@
 
             function handleSwipeGestureDetection() {
                 const swipeDistanceDelta = touchEndingPositionX - touchStartingPositionX;
-                const minSwipeThreshold = 50; // Minimum px distance to trigger slide
+                const minSwipeThreshold = 50; // Minimum px distance to trigger slide transition
 
                 if (swipeDistanceDelta < -minSwipeThreshold) {
-                    // Swiped Left -> Advance to Next
+                    // Swiped Left -> Advance to Next Slide
                     if (currentActiveSlideIndex < totalOnboardingSlidesCount - 1) {
                         navigateToOnboardingSlideIndex(currentActiveSlideIndex + 1);
                     }
                 } else if (swipeDistanceDelta > minSwipeThreshold) {
-                    // Swiped Right -> Go Back to Previous
+                    // Swiped Right -> Return to Previous Slide
                     if (currentActiveSlideIndex > 0) {
                         navigateToOnboardingSlideIndex(currentActiveSlideIndex - 1);
                     }
