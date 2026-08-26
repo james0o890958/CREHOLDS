@@ -110,98 +110,98 @@
 
     <div class="flex h-screen overflow-hidden">
         
-        <!-- SIDEBAR (Gradient: #00D285 to #006C44) -->
-        <aside class="w-64 gradient-sidebar text-white flex flex-col flex-shrink-0 select-none overflow-y-auto">
+        <!-- SIDEBAR (Gradient: #00D285 to #006C44, Collapsible icon-only mode < 1024px) -->
+        <aside class="w-16 lg:w-64 gradient-sidebar text-white flex flex-col flex-shrink-0 select-none overflow-y-auto transition-all duration-300">
             
             <!-- Brand Logo Header -->
-            <div class="p-6 border-b border-white/10 flex items-center gap-3">
+            <div class="p-4 lg:p-6 border-b border-white/10 flex items-center justify-center lg:justify-start gap-3">
                 <img src="crehold logo.png" alt="CreoHold Emblem" class="w-8 h-8 object-contain flex-shrink-0">
-                <div class="flex flex-col">
+                <div class="hidden lg:flex flex-col">
                     <span class="font-bold text-lg text-white leading-tight">CreoHold</span>
                     <span class="text-[9px] text-white/80 font-normal leading-tight">Hold Your Value.Move It Freely.</span>
                 </div>
             </div>
 
             <!-- Navigation Links -->
-            <nav class="flex-1 px-4 py-6 space-y-6">
+            <nav class="flex-1 px-2 lg:px-4 py-6 space-y-6">
                 
                 <!-- MAIN -->
                 <div>
-                    <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2">Main</h3>
-                    <a href="#" class="sidebar-menu-item active">
+                    <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2 hidden lg:block">Main</h3>
+                    <a href="#" class="sidebar-menu-item active justify-center lg:justify-start">
                         <img src="Vector (18).svg" class="sidebar-icon" alt="Dashboard">
-                        <span>Dashboard</span>
+                        <span class="hidden lg:inline">Dashboard</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (12).svg" class="sidebar-icon" alt="Wallet">
-                        <span>Wallet</span>
+                        <span class="hidden lg:inline">Wallet</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (9).svg" class="sidebar-icon" alt="Send Money">
-                        <span>Send Money</span>
+                        <span class="hidden lg:inline">Send Money</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (10).svg" class="sidebar-icon" alt="Receive Money">
-                        <span>Receive Money</span>
+                        <span class="hidden lg:inline">Receive Money</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (11).svg" class="sidebar-icon" alt="Swap">
-                        <span>Swap</span>
+                        <span class="hidden lg:inline">Swap</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (15).svg" class="sidebar-icon" alt="Top Up">
-                        <span>Top Up</span>
+                        <span class="hidden lg:inline">Top Up</span>
                     </a>
                 </div>
 
                 <!-- PAYMENT -->
                 <div>
-                    <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2">Payment</h3>
-                    <a href="#" class="sidebar-menu-item">
+                    <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2 hidden lg:block">Payment</h3>
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (13).svg" class="sidebar-icon" alt="Pay Bills">
-                        <span>Pay Bills</span>
+                        <span class="hidden lg:inline">Pay Bills</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (14).svg" class="sidebar-icon" alt="Airtime & Data">
-                        <span>Airtime & Data</span>
+                        <span class="hidden lg:inline">Airtime & Data</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (15).svg" class="sidebar-icon" alt="Cards">
-                        <span>Cards</span>
+                        <span class="hidden lg:inline">Cards</span>
                     </a>
                 </div>
 
                 <!-- ANALYTICS -->
                 <div>
-                    <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2">Analytics</h3>
-                    <a href="#" class="sidebar-menu-item">
+                    <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2 hidden lg:block">Analytics</h3>
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (16).svg" class="sidebar-icon" alt="Analytics">
-                        <span>Analytics</span>
+                        <span class="hidden lg:inline">Analytics</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (17).svg" class="sidebar-icon" alt="Reports">
-                        <span>Reports</span>
+                        <span class="hidden lg:inline">Reports</span>
                     </a>
                 </div>
 
                 <!-- MORE -->
                 <div>
-                    <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2">More</h3>
-                    <a href="#" class="sidebar-menu-item">
+                    <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2 hidden lg:block">More</h3>
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (20).svg" class="sidebar-icon" alt="Beneficiaries">
-                        <span>Beneficiaries</span>
+                        <span class="hidden lg:inline">Beneficiaries</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (20).svg" class="sidebar-icon" alt="Rewards">
-                        <span>Rewards</span>
+                        <span class="hidden lg:inline">Rewards</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
                         <img src="Vector (19).svg" class="sidebar-icon" alt="Settings">
-                        <span>Settings</span>
+                        <span class="hidden lg:inline">Settings</span>
                     </a>
-                    <a href="#" class="sidebar-menu-item mt-4 text-white/90 hover:text-white">
+                    <a href="#" class="sidebar-menu-item justify-center lg:justify-start mt-4 text-white/90 hover:text-white">
                         <img src="Vector (21).svg" class="sidebar-icon" alt="Logout">
-                        <span>Logout</span>
+                        <span class="hidden lg:inline">Logout</span>
                     </a>
                 </div>
 
@@ -212,9 +212,9 @@
         <div class="flex-1 flex flex-col overflow-hidden bg-gray-50/50">
             
             <!-- TOP HEADER -->
-            <header class="bg-white border-b border-gray-100 px-8 py-3.5 flex items-center justify-between shadow-sm z-10">
-                <!-- Search Input -->
-                <div class="relative w-96">
+            <header class="bg-white border-b border-gray-100 px-4 lg:px-8 py-3.5 flex items-center justify-between shadow-sm z-10 gap-4">
+                <!-- Search Input (Flexible width max-w-md w-full) -->
+                <div class="relative flex-1 max-w-md w-full">
                     <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                         <i class="fas fa-search text-sm"></i>
                     </span>
@@ -246,7 +246,7 @@
             </header>
 
             <!-- SCROLLABLE CONTENT BODY -->
-            <main class="flex-1 overflow-y-auto p-8">
+            <main class="flex-1 overflow-y-auto p-4 lg:p-8">
                 
                 <!-- GREETING SECTION -->
                 <div class="flex items-center gap-4 mb-8">
@@ -258,10 +258,10 @@
                 </div>
 
                 <!-- TWO COLUMN DASHBOARD GRID -->
-                <div class="grid grid-cols-12 gap-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
                     
-                    <!-- LEFT COLUMN (7 cols) -->
-                    <div class="col-span-12 lg:col-span-7 xl:col-span-7 space-y-6">
+                    <!-- LEFT COLUMN (7 cols on lg+) -->
+                    <div class="col-span-1 lg:col-span-7 xl:col-span-7 space-y-6">
                         
                         <!-- TOTAL BALANCE CARD (Gradient: #00D285 to #006C44) -->
                         <div class="gradient-card rounded-3xl p-7 text-white shadow-lg relative overflow-hidden">
@@ -292,7 +292,7 @@
                             <!-- Balance Amounts -->
                             <div class="mb-8 flex items-baseline justify-between">
                                 <div>
-                                    <h2 id="balanceAmount" class="text-4xl font-bold tracking-tight mb-1">N19,916,381.956</h2>
+                                    <h2 id="balanceAmount" class="text-4xl font-bold tracking-tight">N19,916,381.956</h2>
                                     <p id="subBalanceAmount" class="text-base text-white/80 font-normal">$12,071 USD</p>
                                 </div>
                                 <!-- NGN/USD pill — white border container with NGN active badge, matching wallet.png -->
@@ -303,7 +303,7 @@
                             </div>
 
                             <!-- Action Buttons -->
-                            <div class="grid grid-cols-4 gap-3">
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                 <button class="action-btn py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 text-white">
                                     <img src="Vector (2).svg" class="w-4 h-4 filter invert brightness-200" alt="Top Up">
                                     <span>Top Up</span>
@@ -352,8 +352,8 @@
 
                     </div>
 
-                    <!-- RIGHT COLUMN (5 cols) -->
-                    <div class="col-span-12 lg:col-span-5 xl:col-span-5 space-y-6">
+                    <!-- RIGHT COLUMN (5 cols on lg+) -->
+                    <div class="col-span-1 lg:col-span-5 xl:col-span-5 space-y-6">
                         
                         <!-- YOUR ASSETS CARD -->
                         <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">

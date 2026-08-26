@@ -42,21 +42,29 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* iOS Safe Area Notch and Home Bar Support */
+        .safe-area-header {
+            padding-top: max(0.75rem, env(safe-area-inset-top));
+        }
+        .safe-area-footer {
+            padding-bottom: max(2rem, env(safe-area-inset-bottom));
+        }
     </style>
 </head>
 <body id="onboardingApplicationBodyCanvas" class="bg-[#1a1a1a] min-h-[100dvh] w-full flex items-center justify-center p-0 sm:p-6 overflow-x-hidden select-none">
 
     <!-- MAIN FRAME: fullscreen on mobile, "phone frame" look only on sm and up -->
-    <main id="onboardingMobileDeviceViewportFrame" class="w-full max-w-full sm:max-w-[420px] min-h-[100dvh] sm:min-h-[720px] onboarding-gradient-background rounded-none sm:rounded-[44px] shadow-none sm:shadow-2xl overflow-hidden relative flex flex-col justify-between border-0 sm:border-4 sm:border-gray-800/40 my-auto">
+    <main id="onboardingMobileDeviceViewportFrame" class="w-full max-w-full sm:max-w-[420px] h-[100dvh] sm:h-[720px] min-h-[100dvh] sm:min-h-[720px] onboarding-gradient-background rounded-none sm:rounded-[44px] shadow-none sm:shadow-2xl overflow-hidden relative flex flex-col justify-between border-0 sm:border-4 sm:border-gray-800/40 my-auto">
         
         <!-- Sliding Track Container for 3 Screens -->
-        <div id="onboardingCarouselSlidesTrack" class="w-full h-full flex transition-transform duration-500 ease-in-out transform translate-x-0">
+        <div id="onboardingCarouselSlidesTrack" class="w-full h-full min-h-full flex transition-transform duration-500 ease-in-out transform translate-x-0">
 
             <!-- ==================== SCREEN 1: ONE WALLET, EVERY CURRENCY ==================== -->
-            <section id="onboardingScreenOneWalletIntroContainer" class="w-full shrink-0 min-w-[100%] h-full flex flex-col justify-between p-6 sm:p-7 relative">
+            <section id="onboardingScreenOneWalletIntroContainer" class="w-full shrink-0 min-w-[100%] h-full min-h-[100dvh] sm:min-h-[720px] flex flex-col justify-between p-6 sm:p-7 relative">
                 
                 <!-- Top Navigation Header -->
-                <header id="onboardingSlideOneTopHeader" class="w-full pt-2">
+                <header id="onboardingSlideOneTopHeader" class="w-full pt-2 safe-area-header">
                     <!-- Row 1: Hamburger Menu Icon (Top Left) -->
                     <div id="onboardingSlideOneHamburgerRow" class="flex items-center justify-start mb-3">
                         <div id="onboardingSlideOneHamburgerMenuIcon" class="text-white p-1 pointer-events-none select-none">
@@ -84,20 +92,20 @@
 
                     <!-- Row 3: Centered Logo / Wordmark (Prominent Icon + CreoHold Text) -->
                     <div id="onboardingSlideOneLogoWrapper" class="w-full flex items-center justify-center gap-2.5 my-2">
-                        <img id="onboardingSlideOneCreoHoldLogoIcon" src="crehold 6.svg" alt="CreoHold White Logo Icon" class="h-7 w-7 sm:h-8 sm:w-8 object-contain filter drop-shadow-sm">
+                        <img id="onboardingSlideOneCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-7 w-7 sm:h-8 sm:w-8 object-contain filter drop-shadow-sm">
                         <span id="onboardingSlideOneCreoHoldLogoText" class="text-white font-bold text-xl sm:text-2xl tracking-tight">CreoHold</span>
                     </div>
                 </header>
 
                 <!-- Center Hero Illustration & Messaging Section -->
-                <div id="onboardingSlideOneMainContentHeroSection" class="flex flex-col items-center text-center px-3 sm:px-4 my-auto py-4 sm:py-6 space-y-6 sm:space-y-8">
+                <div id="onboardingSlideOneMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-4 sm:py-6 space-y-6 sm:space-y-8 my-auto">
                     <!-- 3D Graphic Illustration (Sized to match reference ~165px) -->
                     <div id="onboardingSlideOneIllustrationFrame" class="w-full flex items-center justify-center my-1">
-                        <img id="onboardingSlideOneWalletIntroIcon" src="wallet.png" alt="CreoHold Multi-Currency 3D Digital Wallet" class="w-[160px] sm:w-[175px] h-[160px] sm:h-[175px] object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300">
+                        <img id="onboardingSlideOneWalletIntroIcon" src="wallet-icon.png.png" onerror="this.onerror=null; this.src='wallet-icon.png.png';" alt="CreoHold Multi-Currency 3D Digital Wallet" class="w-[160px] sm:w-[175px] h-[160px] sm:h-[175px] object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300">
                     </div>
 
-                    <!-- Typography Group with vertical spacing between headline & body text -->
-                    <div class="space-y-4 max-w-[300px] mx-auto">
+                    <!-- Typography Group tightly paired to match Figma reference layout -->
+                    <div class="space-y-3 sm:space-y-4 max-w-[300px] mx-auto">
                         <!-- Headline (2 Lines) -->
                         <h1 id="onboardingSlideOneHeadlineTitleText" class="text-white text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight">
                             One Wallet,<br>Every currency
@@ -110,8 +118,8 @@
                     </div>
                 </div>
 
-                <!-- Bottom CTA Action Button Footer -->
-                <footer id="onboardingSlideOneBottomActionFooter" class="w-full pb-6 pt-4">
+                <!-- Bottom CTA Action Button Footer Pinned to Bottom of Mobile Screen -->
+                <footer id="onboardingSlideOneBottomActionFooter" class="w-full pb-8 sm:pb-10 pt-2 mt-auto safe-area-footer">
                     <!-- Solid Target UI Green Button (#21b663) -->
                     <button id="onboardingSlideOneContinueActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-4 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center focus:outline-none">
                         Continue
@@ -121,10 +129,10 @@
 
 
             <!-- ==================== SCREEN 2: SWAP AT LIVE MARKET RATES ==================== -->
-            <section id="onboardingScreenTwoSwapRatesContainer" class="w-full shrink-0 min-w-[100%] h-full flex flex-col justify-between p-6 sm:p-7 relative">
+            <section id="onboardingScreenTwoSwapRatesContainer" class="w-full shrink-0 min-w-[100%] h-full min-h-[100dvh] sm:min-h-[720px] flex flex-col justify-between p-6 sm:p-7 relative">
                 
                 <!-- Top Navigation Header -->
-                <header id="onboardingSlideTwoTopHeader" class="w-full pt-2">
+                <header id="onboardingSlideTwoTopHeader" class="w-full pt-2 safe-area-header">
                     <!-- Row 1: Hamburger Menu Icon (Top Left) -->
                     <div id="onboardingSlideTwoHamburgerRow" class="flex items-center justify-start mb-3">
                         <div id="onboardingSlideTwoHamburgerMenuIcon" class="text-white p-1 pointer-events-none select-none">
@@ -152,20 +160,20 @@
 
                     <!-- Row 3: Centered Logo / Wordmark (Prominent Icon + CreoHold Text) -->
                     <div id="onboardingSlideTwoLogoWrapper" class="w-full flex items-center justify-center gap-2.5 my-2">
-                        <img id="onboardingSlideTwoCreoHoldLogoIcon" src="crehold 6.svg" alt="CreoHold White Logo Icon" class="h-7 w-7 sm:h-8 sm:w-8 object-contain filter drop-shadow-sm">
+                        <img id="onboardingSlideTwoCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-7 w-7 sm:h-8 sm:w-8 object-contain filter drop-shadow-sm">
                         <span id="onboardingSlideTwoCreoHoldLogoText" class="text-white font-bold text-xl sm:text-2xl tracking-tight">CreoHold</span>
                     </div>
                 </header>
 
                 <!-- Center Hero Illustration & Messaging Section -->
-                <div id="onboardingSlideTwoMainContentHeroSection" class="flex flex-col items-center text-center px-3 sm:px-4 my-auto py-4 sm:py-6 space-y-6 sm:space-y-8">
+                <div id="onboardingSlideTwoMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-4 sm:py-6 space-y-6 sm:space-y-8 my-auto">
                     <!-- 3D Graphic Illustration (Sized to match reference ~165px) -->
                     <div id="onboardingSlideTwoIllustrationFrame" class="w-full flex items-center justify-center my-1">
-                        <img id="onboardingSlideTwoSwapRatesIcon" src="assets/swap-coins-icon.png" alt="Crypto and cash swap coins" class="w-[160px] sm:w-[175px] h-[160px] sm:h-[175px] object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl">
+                        <img id="onboardingSlideTwoSwapRatesIcon" src="swap-coins-icon.png" alt="Crypto and cash swap coins" class="w-[160px] sm:w-[175px] h-[160px] sm:h-[175px] object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl">
                     </div>
 
-                    <!-- Typography Group with vertical spacing between headline & body text -->
-                    <div class="space-y-4 max-w-[300px] mx-auto">
+                    <!-- Typography Group tightly paired to match Figma reference layout -->
+                    <div class="space-y-3 sm:space-y-4 max-w-[300px] mx-auto">
                         <!-- Headline (2 Lines) -->
                         <h1 id="onboardingSlideTwoHeadlineTitleText" class="text-white text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight">
                             Swap at live<br>Market Rates
@@ -178,8 +186,8 @@
                     </div>
                 </div>
 
-                <!-- Bottom CTA Action Button Footer -->
-                <footer id="onboardingSlideTwoBottomActionFooter" class="w-full pb-6 pt-4">
+                <!-- Bottom CTA Action Button Footer Pinned to Bottom of Mobile Screen -->
+                <footer id="onboardingSlideTwoBottomActionFooter" class="w-full pb-8 sm:pb-10 pt-2 mt-auto safe-area-footer">
                     <!-- Solid Target UI Green Button (#21b663) -->
                     <button id="onboardingSlideTwoContinueActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-4 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center focus:outline-none">
                         Continue
@@ -189,10 +197,10 @@
 
 
             <!-- ==================== SCREEN 3: BUILD TO PROTECT WHAT YOU HOLD ==================== -->
-            <section id="onboardingScreenThreeSecurityProtectionContainer" class="w-full shrink-0 min-w-[100%] h-full flex flex-col justify-between p-6 sm:p-7 relative">
+            <section id="onboardingScreenThreeSecurityProtectionContainer" class="w-full shrink-0 min-w-[100%] h-full min-h-[100dvh] sm:min-h-[720px] flex flex-col justify-between p-6 sm:p-7 relative">
                 
                 <!-- Top Navigation Header -->
-                <header id="onboardingSlideThreeTopHeader" class="w-full pt-2">
+                <header id="onboardingSlideThreeTopHeader" class="w-full pt-2 safe-area-header">
                     <!-- Row 1: Hamburger Menu Icon (Top Left) -->
                     <div id="onboardingSlideThreeHamburgerRow" class="flex items-center justify-start mb-3">
                         <div id="onboardingSlideThreeHamburgerMenuIcon" class="text-white p-1 pointer-events-none select-none">
@@ -220,20 +228,20 @@
 
                     <!-- Row 3: Centered Logo / Wordmark (Prominent Icon + CreoHold Text) -->
                     <div id="onboardingSlideThreeLogoWrapper" class="w-full flex items-center justify-center gap-2.5 my-2">
-                        <img id="onboardingSlideThreeCreoHoldLogoIcon" src="crehold 6.svg" alt="CreoHold White Logo Icon" class="h-7 w-7 sm:h-8 sm:w-8 object-contain filter drop-shadow-sm">
+                        <img id="onboardingSlideThreeCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-7 w-7 sm:h-8 sm:w-8 object-contain filter drop-shadow-sm">
                         <span id="onboardingSlideThreeCreoHoldLogoText" class="text-white font-bold text-xl sm:text-2xl tracking-tight">CreoHold</span>
                     </div>
                 </header>
 
                 <!-- Center Hero Illustration & Messaging Section -->
-                <div id="onboardingSlideThreeMainContentHeroSection" class="flex flex-col items-center text-center px-3 sm:px-4 my-auto py-4 sm:py-6 space-y-6 sm:space-y-8">
+                <div id="onboardingSlideThreeMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-4 sm:py-6 space-y-6 sm:space-y-8 my-auto">
                     <!-- 3D Graphic Illustration (Sized to match reference ~165px) -->
                     <div id="onboardingSlideThreeIllustrationFrame" class="w-full flex items-center justify-center my-1">
-                        <img id="onboardingScreenThreeShieldIcon" src="assets/shield-check-icon.png" alt="Security shield with checkmark" class="w-[160px] sm:w-[175px] h-[160px] sm:h-[175px] object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl">
+                        <img id="onboardingScreenThreeShieldIcon" src="shield-check-icon.png" alt="Security shield with checkmark" class="w-[160px] sm:w-[175px] h-[160px] sm:h-[175px] object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl">
                     </div>
 
-                    <!-- Typography Group with vertical spacing between headline & body text -->
-                    <div class="space-y-4 max-w-[300px] mx-auto">
+                    <!-- Typography Group tightly paired to match Figma reference layout -->
+                    <div class="space-y-3 sm:space-y-4 max-w-[300px] mx-auto">
                         <!-- Headline (2 Lines) -->
                         <h1 id="onboardingSlideThreeHeadlineTitleText" class="text-white text-2xl sm:text-3xl font-extrabold leading-tight tracking-tight">
                             Build to protect<br>what you hold
@@ -246,8 +254,8 @@
                     </div>
                 </div>
 
-                <!-- Bottom CTA Action Button Footer -->
-                <footer id="onboardingSlideThreeBottomActionFooter" class="w-full pb-6 pt-4">
+                <!-- Bottom CTA Action Button Footer Pinned to Bottom of Mobile Screen -->
+                <footer id="onboardingSlideThreeBottomActionFooter" class="w-full pb-8 sm:pb-10 pt-2 mt-auto safe-area-footer">
                     <!-- Solid Target UI Green Button (#21b663) -->
                     <button id="onboardingSlideThreeGetStartedActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-4 rounded-full shadow-lg transition-all duration-200 flex items-center justify-center focus:outline-none">
                         Get Started
