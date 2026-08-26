@@ -71,13 +71,15 @@
         }
 
         /* Action buttons inside Total Balance card — #2BA84A at 40% opacity per design spec */
+        /* All four buttons (Top Up, Swap, Send, Bills) share this class — hover applies equally to all */
         .action-btn {
             background-color: rgba(43, 168, 74, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.30);
-            transition: all 0.2s ease;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            cursor: pointer;
         }
 
-        /* Action buttons hover — #00D285 at 10% opacity per design spec */
+        /* Hover state — #00D285 at 10% opacity, shared by all four action buttons */
         .action-btn:hover {
             background-color: rgba(0, 210, 133, 0.1);
             transform: translateY(-1px);
