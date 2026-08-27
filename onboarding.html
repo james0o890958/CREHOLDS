@@ -54,6 +54,18 @@
         .safe-area-footer {
             padding-bottom: max(2rem, env(safe-area-inset-bottom));
         }
+
+        /* Ensure smooth 60fps gesture dragging without browser page-swipe interference */
+        #onboardingCarouselSlidesTrack {
+            touch-action: pan-y;
+            will-change: transform;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        #onboardingCarouselSlidesTrack:active {
+            cursor: grabbing;
+        }
     </style>
 </head>
 <body id="onboardingApplicationBodyCanvas" class="bg-[#1a1a1a] min-h-[100dvh] w-full flex items-center justify-center p-0 sm:p-6 overflow-x-hidden select-none">
@@ -62,7 +74,7 @@
     <main id="onboardingMobileDeviceViewportFrame" class="w-full max-w-full sm:max-w-[420px] h-[100dvh] sm:h-[720px] min-h-[100dvh] sm:min-h-[720px] onboarding-gradient-background rounded-none sm:rounded-[44px] shadow-none sm:shadow-2xl overflow-hidden relative flex flex-col justify-between border-0 sm:border-4 sm:border-gray-800/40 my-auto">
         
         <!-- Sliding Track Container for 3 Screens -->
-        <div id="onboardingCarouselSlidesTrack" class="w-full h-full min-h-full flex transition-transform duration-500 ease-in-out transform translate-x-0">
+        <div id="onboardingCarouselSlidesTrack" class="w-full h-full min-h-full flex transform translate-x-0">
 
             <!-- ==================== SCREEN 1: ONE WALLET, EVERY CURRENCY ==================== -->
             <section id="onboardingScreenOneWalletIntroContainer" class="w-full shrink-0 min-w-[100%] h-full min-h-[100dvh] sm:min-h-[720px] flex flex-col justify-between p-6 sm:p-7 relative">
@@ -344,7 +356,8 @@
                 currentActiveSlideIndex = targetSlideIndex;
                 const percentageTranslateOffset = -(targetSlideIndex * 100);
                 
-                // Translate the track horizontally with smooth transition
+                // Re-enable smooth transition animation when snapping to slide
+                onboardingCarouselSlidesTrack.style.transition = 'transform 350ms cubic-bezier(0.25, 1, 0.5, 1)';
                 onboardingCarouselSlidesTrack.style.transform = `translateX(${percentageTranslateOffset}%)`;
 
                 // Update active/inactive state of progress bar segments across all screen headers
@@ -421,89 +434,153 @@
                 }
             });
 
-            // Touch & Mouse Drag Swipe Gesture Support for Native Mobile Navigation
-            let touchStartingPositionX = 0;
-            let touchStartingPositionY = 0;
-            let touchEndingPositionX = 0;
-            let touchEndingPositionY = 0;
-            let isSwipingActive = false;
+            // ==================== LIVE INTERACTIVE SWIPE & DRAG CONTROLLER ====================
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let currentDeltaX = 0;
+            let currentDeltaY = 0;
+            let isDragging = false;
+            let isHorizontalSwipe = null; // null = undetermined, true = horizontal, false = vertical
 
-            // Prevent native image dragging on touch/mouse
+            // Prevent native image dragging interference
             const allCarouselImages = onboardingCarouselSlidesTrack.querySelectorAll('img');
             allCarouselImages.forEach(img => {
                 img.addEventListener('dragstart', function (e) { e.preventDefault(); });
             });
 
+            function getTrackWidth() {
+                const viewportFrame = document.getElementById('onboardingMobileDeviceViewportFrame');
+                return viewportFrame ? viewportFrame.offsetWidth : window.innerWidth;
+            }
+
+            // --- TOUCH EVENT HANDLERS ---
             onboardingCarouselSlidesTrack.addEventListener('touchstart', function (e) {
-                if (e.touches && e.touches.length > 1) return; // Ignore multi-finger gestures
-                isSwipingActive = true;
-                touchStartingPositionX = e.touches[0].clientX;
-                touchStartingPositionY = e.touches[0].clientY;
-                touchEndingPositionX = touchStartingPositionX;
-                touchEndingPositionY = touchStartingPositionY;
+                if (e.touches && e.touches.length > 1) return;
+                
+                isDragging = true;
+                isHorizontalSwipe = null;
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                currentDeltaX = 0;
+                currentDeltaY = 0;
+
+                // Disable CSS transition during finger drag for 1:1 instantaneous response
+                onboardingCarouselSlidesTrack.style.transition = 'none';
             }, { passive: true });
 
             onboardingCarouselSlidesTrack.addEventListener('touchmove', function (e) {
-                if (!isSwipingActive) return;
-                touchEndingPositionX = e.touches[0].clientX;
-                touchEndingPositionY = e.touches[0].clientY;
+                if (!isDragging) return;
+
+                const currentX = e.touches[0].clientX;
+                const currentY = e.touches[0].clientY;
+                currentDeltaX = currentX - touchStartX;
+                currentDeltaY = currentY - touchStartY;
+
+                // Lock gesture direction on initial movement threshold
+                if (isHorizontalSwipe === null) {
+                    const absX = Math.abs(currentDeltaX);
+                    const absY = Math.abs(currentDeltaY);
+                    if (absX > 6 || absY > 6) {
+                        isHorizontalSwipe = absX > absY;
+                    }
+                }
+
+                // If horizontal swipe, follow finger in real-time
+                if (isHorizontalSwipe === true) {
+                    const trackWidth = getTrackWidth();
+                    let baseTranslatePx = -(currentActiveSlideIndex * trackWidth);
+                    let targetTranslatePx = baseTranslatePx + currentDeltaX;
+
+                    // Rubber-band resistance on boundary edges
+                    if (currentActiveSlideIndex === 0 && currentDeltaX > 0) {
+                        targetTranslatePx = baseTranslatePx + (currentDeltaX * 0.3);
+                    } else if (currentActiveSlideIndex === totalOnboardingSlidesCount - 1 && currentDeltaX < 0) {
+                        targetTranslatePx = baseTranslatePx + (currentDeltaX * 0.3);
+                    }
+
+                    onboardingCarouselSlidesTrack.style.transform = `translateX(${targetTranslatePx}px)`;
+                }
             }, { passive: true });
 
             onboardingCarouselSlidesTrack.addEventListener('touchend', function () {
-                if (!isSwipingActive) return;
-                isSwipingActive = false;
-                handleSwipeGestureDetection();
+                if (!isDragging) return;
+                isDragging = false;
+                finishSwipeGesture();
             }, { passive: true });
 
             onboardingCarouselSlidesTrack.addEventListener('touchcancel', function () {
-                isSwipingActive = false;
+                if (!isDragging) return;
+                isDragging = false;
+                finishSwipeGesture();
             }, { passive: true });
 
-            // Mouse Drag Support for Desktop Browser Testing
+
+            // --- MOUSE DRAG HANDLERS (DESKTOP TESTING) ---
             let isMouseDown = false;
+
             onboardingCarouselSlidesTrack.addEventListener('mousedown', function (e) {
                 if (e.target.closest('button, a')) return;
+                
                 isMouseDown = true;
-                touchStartingPositionX = e.clientX;
-                touchStartingPositionY = e.clientY;
-                touchEndingPositionX = touchStartingPositionX;
-                touchEndingPositionY = touchStartingPositionY;
+                isHorizontalSwipe = true;
+                touchStartX = e.clientX;
+                touchStartY = e.clientY;
+                currentDeltaX = 0;
+                currentDeltaY = 0;
+
+                onboardingCarouselSlidesTrack.style.transition = 'none';
             });
 
             document.addEventListener('mousemove', function (e) {
                 if (!isMouseDown) return;
-                touchEndingPositionX = e.clientX;
-                touchEndingPositionY = e.clientY;
+
+                currentDeltaX = e.clientX - touchStartX;
+                currentDeltaY = e.clientY - touchStartY;
+
+                const trackWidth = getTrackWidth();
+                let baseTranslatePx = -(currentActiveSlideIndex * trackWidth);
+                let targetTranslatePx = baseTranslatePx + currentDeltaX;
+
+                if (currentActiveSlideIndex === 0 && currentDeltaX > 0) {
+                    targetTranslatePx = baseTranslatePx + (currentDeltaX * 0.3);
+                } else if (currentActiveSlideIndex === totalOnboardingSlidesCount - 1 && currentDeltaX < 0) {
+                    targetTranslatePx = baseTranslatePx + (currentDeltaX * 0.3);
+                }
+
+                onboardingCarouselSlidesTrack.style.transform = `translateX(${targetTranslatePx}px)`;
             });
 
             document.addEventListener('mouseup', function () {
                 if (!isMouseDown) return;
                 isMouseDown = false;
-                handleSwipeGestureDetection();
+                finishSwipeGesture();
             });
 
-            function handleSwipeGestureDetection() {
-                const swipeDistanceDeltaX = touchEndingPositionX - touchStartingPositionX;
-                const swipeDistanceDeltaY = touchEndingPositionY - touchStartingPositionY;
 
-                // Ensure horizontal swipe movement dominates vertical scroll
-                if (Math.abs(swipeDistanceDeltaX) < Math.abs(swipeDistanceDeltaY)) {
-                    return; // User was scrolling vertically, ignore swipe
-                }
+            // --- FINISH GESTURE DECISION LOGIC ---
+            function finishSwipeGesture() {
+                const trackWidth = getTrackWidth();
+                const swipeThreshold = Math.min(trackWidth * 0.18, 50);
 
-                const minSwipeThreshold = 35; // Responsive threshold for mobile flick gesture
-
-                if (swipeDistanceDeltaX < -minSwipeThreshold) {
-                    // Swiped Left -> Advance to Next Slide
-                    if (currentActiveSlideIndex < totalOnboardingSlidesCount - 1) {
+                if (isHorizontalSwipe === true && Math.abs(currentDeltaX) > swipeThreshold) {
+                    if (currentDeltaX < 0 && currentActiveSlideIndex < totalOnboardingSlidesCount - 1) {
+                        // Swiped Left -> Advance to next slide
                         navigateToOnboardingSlideIndex(currentActiveSlideIndex + 1);
-                    }
-                } else if (swipeDistanceDeltaX > minSwipeThreshold) {
-                    // Swiped Right -> Return to Previous Slide
-                    if (currentActiveSlideIndex > 0) {
+                    } else if (currentDeltaX > 0 && currentActiveSlideIndex > 0) {
+                        // Swiped Right -> Return to previous slide
                         navigateToOnboardingSlideIndex(currentActiveSlideIndex - 1);
+                    } else {
+                        // Snap back on edge boundary
+                        navigateToOnboardingSlideIndex(currentActiveSlideIndex);
                     }
+                } else {
+                    // Small drag -> Snap back to active slide
+                    navigateToOnboardingSlideIndex(currentActiveSlideIndex);
                 }
+
+                currentDeltaX = 0;
+                currentDeltaY = 0;
+                isHorizontalSwipe = null;
             }
 
         });
