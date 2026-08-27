@@ -145,7 +145,7 @@
                         <span class="hidden lg:inline">Receive Money</span>
                     </a>
                     <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
-                        <img src="swap.svg" class="sidebar-icon" alt="Swap">
+                        <img src="icon-swap.svg" class="sidebar-icon" alt="Swap">
                         <span class="hidden lg:inline">Swap</span>
                     </a>
                     <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
@@ -270,13 +270,13 @@
                             <div class="flex items-center justify-between mb-6">
                                 <div class="flex items-center gap-3">
                                     <div class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center font-bold text-white text-base border border-white/20 shadow-inner">
-                                        ₦
+                                        N
                                     </div>
-                                    <div>
-                                        <div class="flex items-center gap-2 flex-wrap">
-                                            <span class="text-sm font-semibold text-white">Total Balance</span>
-                                            <span class="bg-white/20 text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider">NGN</span>
-                                            <span class="bg-emerald-400/30 text-white text-[11px] font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                                    <div class="flex flex-col justify-center">
+                                        <span class="text-sm font-medium text-white leading-tight">Total Balance</span>
+                                        <div class="flex items-center gap-2 mt-1">
+                                            <span class="bg-white/20 text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider text-white">NGN</span>
+                                            <span class="bg-white/15 text-white text-[11px] font-medium px-3 py-0.5 rounded-full flex items-center gap-1">
                                                 <i class="fas fa-arrow-up text-[9px]"></i> 12.5% this month
                                             </span>
                                         </div>
@@ -292,13 +292,13 @@
                             <!-- Balance Amounts -->
                             <div class="mb-8 flex items-baseline justify-between">
                                 <div>
-                                    <h2 id="balanceAmount" class="text-3.5xl sm:text-4xl font-extrabold tracking-tight">₦19,916,381.95</h2>
-                                    <p id="subBalanceAmount" class="text-base text-white/80 font-normal mt-1">$12,071 USD</p>
+                                    <h2 id="balanceAmount" class="text-3.5xl sm:text-4xl font-extrabold tracking-tight">₦19,916,381.956</h2>
+                                    <p id="subBalanceAmount" class="text-base text-white/90 font-normal mt-1">$12,071 USD</p>
                                 </div>
-                                <!-- NGN/USD pill — white border container with NGN active badge, matching wallet.png -->
-                                <div class="rounded-lg p-1 text-[10px] font-bold uppercase flex items-center gap-1 border border-white/60 shadow-sm" style="background-color: rgba(255,255,255,0.15);">
-                                    <span class="bg-white text-emerald-800 px-2.5 py-0.5 rounded font-bold">NGN</span>
-                                    <span class="px-2.5 py-0.5 cursor-pointer text-white opacity-80 hover:opacity-100">USD</span>
+                                <!-- NGN/USD pill — rounded pill toggle matching Figma wallet.png reference -->
+                                <div class="rounded-full p-0.5 text-[10px] font-bold uppercase flex items-center border border-white/20" style="background-color: rgba(0, 60, 35, 0.35);">
+                                    <span class="bg-white text-gray-800 px-3 py-1 rounded-full font-bold shadow-sm">NGN</span>
+                                    <span class="px-3 py-1 cursor-pointer text-white/90 hover:text-white font-semibold">USD</span>
                                 </div>
                             </div>
 
