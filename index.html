@@ -12,31 +12,24 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /*
-         * Color system — values sampled directly from wallet.png pixel data:
-         * Sidebar:          gradient #00CD82 (top) → #00774C (bottom)
-         * Balance card:     gradient #00D285 (top) → #006C44 (bottom)
-         * Promo banner:     flat solid #2BA84A
-         * Action buttons:   flat solid #01754A with white border
-         * Sidebar active:   rgba white overlay on gradient
+        /* Brand palette colors sampled directly from wallet design specs:
+         * Sidebar background gradient: #00CD82 (top) to #00774C (bottom)
+         * Total Balance card gradient: #00D285 (top) to #006C44 (bottom)
+         * Promo banner solid fill:     #2BA84A
          */
 
-        /* Sidebar background — pixel-sampled gradient from wallet.png */
         .gradient-sidebar {
             background: linear-gradient(180deg, #00CD82 0%, #00774C 100%);
         }
 
-        /* Total Balance card background — pixel-sampled gradient from wallet.png */
         .gradient-card {
             background: linear-gradient(160deg, #00D285 0%, #006C44 100%);
         }
 
-        /* Promo banner — flat solid color #2BA84A, no gradient (pixel-confirmed) */
         .promo-banner {
             background-color: #2BA84A;
         }
 
-        /* Sidebar Navigation Item Styling */
         .sidebar-menu-item {
             display: flex;
             align-items: center;
@@ -55,7 +48,7 @@
             background-color: rgba(255, 255, 255, 0.12);
         }
 
-        /* Active sidebar item — semi-transparent white pill over gradient */
+        /* Semi-transparent active navigation pill */
         .sidebar-menu-item.active {
             background-color: #2BA84A;
             font-weight: 600;
@@ -70,8 +63,7 @@
             object-fit: contain;
         }
 
-        /* Action buttons inside Total Balance card — #2BA84A at 40% opacity per design spec */
-        /* All four buttons (Top Up, Swap, Send, Bills) share this class — hover applies equally to all */
+        /* Semi-transparent action button background with subtle white border */
         .action-btn {
             background-color: rgba(43, 168, 74, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.30);
@@ -79,13 +71,12 @@
             cursor: pointer;
         }
 
-        /* Hover state — #00D285 at 10% opacity, shared by all four action buttons */
         .action-btn:hover {
             background-color: rgba(0, 210, 133, 0.1);
             transform: translateY(-1px);
         }
 
-        /* Gradient text for positive transaction amounts like +312,000 */
+        /* Text gradient applied to positive credit transaction amounts */
         .gradient-amount-text {
             background: linear-gradient(135deg, #00D285 0%, #006C44 100%);
             -webkit-background-clip: text;
@@ -93,7 +84,6 @@
             background-clip: text;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -110,10 +100,9 @@
 
     <div class="flex h-screen overflow-hidden">
         
-        <!-- SIDEBAR (Gradient: #00D285 to #006C44, Collapsible icon-only mode < 1024px) -->
+        <!-- Sidebar navigation with collapsible responsive modes -->
         <aside class="w-16 lg:w-64 gradient-sidebar text-white flex flex-col flex-shrink-0 select-none overflow-y-auto transition-all duration-300">
             
-            <!-- Brand Logo Header -->
             <div class="p-4 lg:p-6 border-b border-white/10 flex items-center justify-center lg:justify-start gap-3">
                 <img src="crehold-logo.svg" alt="CreoHold Emblem" class="w-8 h-8 object-contain flex-shrink-0 filter drop-shadow-md">
                 <div class="hidden lg:flex flex-col">
@@ -122,10 +111,8 @@
                 </div>
             </div>
 
-            <!-- Navigation Links -->
             <nav class="flex-1 px-2 lg:px-4 py-6 space-y-6">
                 
-                <!-- MAIN -->
                 <div>
                     <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2 hidden lg:block">Main</h3>
                     <a href="#" class="sidebar-menu-item active justify-center lg:justify-start">
@@ -154,7 +141,6 @@
                     </a>
                 </div>
 
-                <!-- PAYMENT -->
                 <div>
                     <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2 hidden lg:block">Payment</h3>
                     <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
@@ -171,7 +157,6 @@
                     </a>
                 </div>
 
-                <!-- ANALYTICS -->
                 <div>
                     <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2 hidden lg:block">Analytics</h3>
                     <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
@@ -184,7 +169,6 @@
                     </a>
                 </div>
 
-                <!-- MORE -->
                 <div>
                     <h3 class="px-4 text-[11px] font-bold text-white/70 tracking-wider uppercase mb-2 hidden lg:block">More</h3>
                     <a href="#" class="sidebar-menu-item justify-center lg:justify-start">
@@ -208,12 +192,11 @@
             </nav>
         </aside>
 
-        <!-- MAIN CONTAINER -->
+        <!-- Main scrollable dashboard workspace container -->
         <div class="flex-1 flex flex-col overflow-hidden bg-gray-50/50">
             
-            <!-- TOP HEADER -->
+            <!-- Top application header with global search and user actions -->
             <header class="bg-white border-b border-gray-100 px-4 lg:px-8 py-3.5 flex items-center justify-between shadow-sm z-10 gap-4">
-                <!-- Search Input (Flexible width max-w-md w-full) -->
                 <div class="relative flex-1 max-w-md w-full">
                     <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                         <i class="fas fa-search text-sm"></i>
@@ -222,33 +205,28 @@
                         class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition">
                 </div>
 
-                <!-- Header Actions (Currency Toggle, Notification, User Profile) -->
                 <div class="flex items-center gap-4">
-                    
-                    <!-- Currency Dropdown Badge — NGN uses exact brand #00D285 per user spec -->
                     <div class="flex items-center bg-gray-100/80 p-1 rounded-xl border border-gray-200/60 text-xs font-semibold">
                         <span class="bg-[#00D285] text-white px-3 py-1 rounded-lg text-[11px] shadow-sm">NGN</span>
                         <span class="text-gray-500 px-3 py-1 cursor-pointer hover:text-gray-700">USD</span>
                         <i class="fas fa-chevron-down text-gray-400 text-[10px] pr-2"></i>
                     </div>
 
-                    <!-- Notification Bell -->
                     <button class="relative w-9 h-9 rounded-full bg-gray-100/80 hover:bg-gray-200/80 flex items-center justify-center text-gray-600 transition">
                         <i class="far fa-bell text-sm"></i>
                         <span class="absolute top-2 right-2.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
                     </button>
 
-                    <!-- User Profile Avatar -->
                     <div class="flex items-center gap-2 cursor-pointer">
                         <img src="avatar_micheal.png" alt="Micheal" class="w-9 h-9 rounded-full object-cover border border-gray-200 shadow-sm hover:scale-105 transition-transform">
                     </div>
                 </div>
             </header>
 
-            <!-- SCROLLABLE CONTENT BODY -->
+            <!-- Main scrollable content body -->
             <main class="flex-1 overflow-y-auto p-4 lg:p-8">
                 
-                <!-- GREETING SECTION -->
+                <!-- Dashboard greeting header -->
                 <div class="flex items-center gap-4 mb-8">
                     <img src="avatar_micheal.png" alt="Micheal" class="w-14 h-14 rounded-full object-cover shadow-md border-2 border-white">
                     <div>
@@ -257,16 +235,15 @@
                     </div>
                 </div>
 
-                <!-- TWO COLUMN DASHBOARD GRID -->
+                <!-- Main two-column dashboard content layout grid -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
                     
-                    <!-- LEFT COLUMN (7 cols on lg+) -->
-                    <div class="col-span-1 lg:col-span-7 xl:col-span-7 space-y-6">
+                    <!-- Left column: Primary balance overview and funding details -->
+                    <div class="col-span-1 lg:col-span-7 space-y-6">
                         
-                        <!-- TOTAL BALANCE CARD (Gradient: #00D285 to #006C44) -->
+                        <!-- Total balance summary and primary financial quick actions card -->
                         <div class="gradient-card rounded-3xl p-7 text-white shadow-xl relative overflow-hidden">
                             
-                            <!-- Top Header Row -->
                             <div class="flex items-center justify-between mb-6">
                                 <div class="flex items-center gap-3">
                                     <div class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center font-bold text-white text-base border border-white/20 shadow-inner">
@@ -283,26 +260,22 @@
                                     </div>
                                 </div>
 
-                                <!-- Eye Toggle Button -->
                                 <button id="toggleBalanceBtn" class="w-9 h-9 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-xl flex items-center justify-center text-white transition border border-white/20" title="Hide/Show Balance">
                                     <i class="fas fa-eye-slash text-xs"></i>
                                 </button>
                             </div>
 
-                            <!-- Balance Amounts -->
                             <div class="mb-8 flex items-baseline justify-between">
                                 <div>
-                                    <h2 id="balanceAmount" class="text-3.5xl sm:text-4xl font-extrabold tracking-tight">₦19,916,381.956</h2>
+                                    <h2 id="balanceAmount" class="text-3.5xl sm:text-4xl font-extrabold tracking-tight">₦19,916,381.95</h2>
                                     <p id="subBalanceAmount" class="text-base text-white/90 font-normal mt-1">$12,071 USD</p>
                                 </div>
-                                <!-- NGN/USD pill — rounded pill toggle matching Figma wallet.png reference -->
                                 <div class="rounded-full p-0.5 text-[10px] font-bold uppercase flex items-center border border-white/20" style="background-color: rgba(0, 60, 35, 0.35);">
                                     <span class="bg-white text-gray-800 px-3 py-1 rounded-full font-bold shadow-sm">NGN</span>
                                     <span class="px-3 py-1 cursor-pointer text-white/90 hover:text-white font-semibold">USD</span>
                                 </div>
                             </div>
 
-                            <!-- Action Buttons -->
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                 <button class="action-btn py-2.5 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 text-white shadow-sm hover:shadow">
                                     <img src="topup.svg" class="w-4 h-4 object-contain" alt="Top Up">
@@ -324,7 +297,7 @@
 
                         </div>
 
-                        <!-- EARN CRYPTO PROMO BANNER — flat solid #2BA84A -->
+                        <!-- Promotional yield earning card -->
                         <div class="promo-banner rounded-2xl p-5 text-white flex items-center justify-between relative overflow-hidden shadow-md">
                             <div class="z-10 max-w-sm">
                                 <h3 class="font-bold text-base mb-1 tracking-tight">Earn up to 80% on your crypto asset</h3>
@@ -335,7 +308,7 @@
                             </div>
                         </div>
 
-                        <!-- NGN FUNDING ACCOUNTS -->
+                        <!-- NGN funding bank account details card -->
                         <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                             <h3 class="font-bold text-gray-900 text-base mb-1 tracking-tight">NGN Funding Accounts</h3>
                             <p class="text-xs text-gray-500 mb-4">Use this reserved bank account to fund your NGN wallet.</p>
@@ -351,10 +324,10 @@
 
                     </div>
 
-                    <!-- RIGHT COLUMN (5 cols on lg+) -->
-                    <div class="col-span-1 lg:col-span-5 xl:col-span-5 space-y-6">
+                    <!-- Right column: Portfolio assets breakdown and recent activity -->
+                    <div class="col-span-1 lg:col-span-5 space-y-6">
                         
-                        <!-- YOUR ASSETS CARD -->
+                        <!-- Portfolio asset distribution card -->
                         <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                             <div class="flex items-center justify-between mb-6">
                                 <h3 class="font-bold text-gray-900 text-base tracking-tight">Your Assets</h3>
@@ -362,8 +335,6 @@
                             </div>
 
                             <div class="space-y-4">
-                                
-                                <!-- Naira Naira -->
                                 <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-gray-50 transition cursor-pointer">
                                     <div class="flex items-center gap-3">
                                         <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100/60 flex items-center justify-center shadow-xs">
@@ -379,7 +350,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Bitcoin -->
                                 <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-gray-50 transition cursor-pointer">
                                     <div class="flex items-center gap-3">
                                         <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100/60 flex items-center justify-center text-amber-500 text-base shadow-xs">
@@ -395,7 +365,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Tether USD -->
                                 <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-gray-50 transition cursor-pointer">
                                     <div class="flex items-center gap-3">
                                         <div class="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100/60 flex items-center justify-center shadow-xs">
@@ -411,7 +380,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Ethereum -->
                                 <div class="flex items-center justify-between p-2.5 rounded-xl hover:bg-gray-50 transition cursor-pointer">
                                     <div class="flex items-center gap-3">
                                         <div class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100/60 flex items-center justify-center text-purple-500 text-base shadow-xs">
@@ -430,7 +398,7 @@
                             </div>
                         </div>
 
-                        <!-- RECENT ACTIVITY CARD -->
+                        <!-- Recent transaction history log card -->
                         <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
                             <div class="flex items-center justify-between mb-6">
                                 <h3 class="font-bold text-gray-900 text-base tracking-tight">Recent Activity</h3>
@@ -438,8 +406,6 @@
                             </div>
 
                             <div class="space-y-4">
-                                
-                                <!-- EKEDC Electricity -->
                                 <div class="flex items-center justify-between p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
                                     <div class="flex items-center gap-3">
                                         <div class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0">
@@ -457,7 +423,6 @@
                                     </div>
                                 </div>
 
-                                <!-- USDT-NGN -->
                                 <div class="flex items-center justify-between p-2 rounded-xl hover:bg-gray-50 transition cursor-pointer">
                                     <div class="flex items-center gap-3">
                                         <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
@@ -469,7 +434,6 @@
                                         </div>
                                     </div>
                                     <div class="text-right">
-                                        <!-- Positive transaction amount uses brand gradient text per design -->
                                         <span class="font-bold text-xs gradient-amount-text">+₦312,000</span>
                                     </div>
                                 </div>
@@ -487,41 +451,37 @@
 
     </div>
 
-    <!-- Interactivity Script (Compliant with Code Simplicity principles) -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
-            // DOM Element References
             const accountNumberElement = document.getElementById('accountNumber');
             const copyAccountNumberButton = document.getElementById('copyBtn');
             const balanceAmountElement = document.getElementById('balanceAmount');
             const subBalanceAmountElement = document.getElementById('subBalanceAmount');
             const toggleBalanceVisibilityButton = document.getElementById('toggleBalanceBtn');
 
-            // Original balance text strings
             const originalBalanceText = "₦19,916,381.95";
             const originalSubBalanceText = "$12,071 USD";
             const maskedBalanceText = "••••••••••••";
             const maskedSubBalanceText = "••••••••";
 
-            // State variable tracking balance visibility
             let isBalanceHidden = false;
 
-            // Updates the copy button UI to show the Copied confirmation state
+            // Updates the copy button UI to display the copied confirmation state
             function showCopiedButtonState() {
                 if (copyAccountNumberButton) {
                     copyAccountNumberButton.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
                 }
             }
 
-            // Resets the copy button UI back to its default state
+            // Resets the copy button UI back to its default copy icon and label
             function resetCopyButtonDefaultState() {
                 if (copyAccountNumberButton) {
                     copyAccountNumberButton.innerHTML = '<i class="far fa-copy"></i><span>Copy</span>';
                 }
             }
 
-            // Reads account number from DOM and copies it to system clipboard
+            // Copies the user's NGN account number to the clipboard and provides visual feedback
             function copyAccountNumberToClipboard() {
                 if (!accountNumberElement) {
                     return;
@@ -533,7 +493,7 @@
                 });
             }
 
-            // Hides account balance values and updates toggle button icon
+            // Masks sensitive account balance figures and updates the eye icon
             function hideAccountBalances() {
                 if (balanceAmountElement) {
                     balanceAmountElement.innerText = maskedBalanceText;
@@ -546,7 +506,7 @@
                 }
             }
 
-            // Shows account balance values and updates toggle button icon
+            // Restores visible account balance figures and updates the eye icon
             function showAccountBalances() {
                 if (balanceAmountElement) {
                     balanceAmountElement.innerText = originalBalanceText;
@@ -559,9 +519,9 @@
                 }
             }
 
-            // Toggles balance visibility state between hidden and visible
+            // Toggles account balance visibility between masked and unmasked states
             function toggleAccountBalanceVisibility() {
-                if (isBalanceHidden === true) {
+                if (isBalanceHidden) {
                     isBalanceHidden = false;
                     showAccountBalances();
                 } else {
@@ -570,24 +530,22 @@
                 }
             }
 
-            // Attaches click listener for copying account number
+            // Attaches the click event listener for the account number copy button
             function setupCopyAccountNumberListener() {
                 if (copyAccountNumberButton) {
                     copyAccountNumberButton.addEventListener('click', copyAccountNumberToClipboard);
                 }
             }
 
-            // Attaches click listener for toggling balance visibility
+            // Attaches the click event listener for the balance visibility toggle button
             function setupBalanceToggleListener() {
                 if (toggleBalanceVisibilityButton) {
                     toggleBalanceVisibilityButton.addEventListener('click', toggleAccountBalanceVisibility);
                 }
             }
 
-            // Expose copyAccountNumber globally for inline HTML compatibility
             window.copyAccountNumber = copyAccountNumberToClipboard;
 
-            // Initialize event listeners
             setupCopyAccountNumberListener();
             setupBalanceToggleListener();
 
