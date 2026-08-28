@@ -5,17 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CreoHold - Onboarding Flow</title>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Base Typography */
         * {
             font-family: 'Inter', sans-serif;
         }
@@ -25,7 +19,7 @@
             background: linear-gradient(180deg, #00D285 0%, #006C44 100%);
         }
 
-        /* Remove default browser focus outline, border ring, and tap highlight box on click */
+        /* Prevent default focus ring and tap highlight box on mobile interactive elements */
         button, [role="button"] {
             outline: none !important;
             border: none !important;
@@ -55,7 +49,7 @@
             padding-bottom: max(2rem, env(safe-area-inset-bottom));
         }
 
-        /* Ensure smooth 60fps gesture dragging without browser page-swipe interference */
+        /* Enables gesture dragging on carousel track without browser page swipe interference */
         #onboardingCarouselSlidesTrack {
             touch-action: pan-y;
             will-change: transform;
@@ -70,73 +64,60 @@
 </head>
 <body id="onboardingApplicationBodyCanvas" class="bg-[#1a1a1a] min-h-[100dvh] w-full flex items-center justify-center p-0 sm:p-6 overflow-x-hidden select-none">
 
-    <!-- MAIN FRAME: Fullscreen on mobile devices, framed 420px mobile viewport mockup on desktop screens -->
+    <!-- Main mobile device viewport frame container -->
     <main id="onboardingMobileDeviceViewportFrame" class="w-full max-w-full sm:max-w-[420px] h-[100dvh] sm:h-[720px] min-h-[100dvh] sm:min-h-[720px] onboarding-gradient-background rounded-none sm:rounded-[44px] shadow-none sm:shadow-2xl overflow-hidden relative flex flex-col justify-between border-0 sm:border-4 sm:border-gray-800/40 my-auto">
         
-        <!-- Sliding Track Container for 3 Screens -->
+        <!-- Carousel track container for onboarding screens -->
         <div id="onboardingCarouselSlidesTrack" class="w-full h-full min-h-full flex transform translate-x-0">
 
-            <!-- ==================== SCREEN 1: ONE WALLET, EVERY CURRENCY ==================== -->
+            <!-- Screen 1: One Wallet, Every Currency -->
             <section id="onboardingScreenOneWalletIntroContainer" class="w-full shrink-0 min-w-[100%] h-full min-h-[100dvh] sm:min-h-[720px] flex flex-col justify-between p-6 sm:p-7 relative">
                 
-                <!-- Top Navigation Header: Hamburger Menu, Segmented Progress Indicators & Logo -->
-                <header id="onboardingSlideOneTopHeader" class="w-full pt-2 safe-area-header">
-                    <!-- Row 1: Hamburger Menu Icon (Top Left) -->
-                    <div id="onboardingSlideOneHamburgerRow" class="flex items-center justify-start mb-2.5">
+                <!-- Top navigation header with progress indicators -->
+                <header id="onboardingSlideOneTopHeader" class="w-full pt-1 safe-area-header">
+                    <div id="onboardingSlideOneHamburgerRow" class="flex items-center justify-start mb-1">
                         <div id="onboardingSlideOneHamburgerMenuIcon" class="text-white p-1 pointer-events-none select-none">
                             <i class="fas fa-bars text-lg sm:text-xl"></i>
                         </div>
                     </div>
 
-                    <!-- Row 2: Segmented Progress Bar (3 Clickable Segments) + Skip Link -->
-                    <div id="onboardingSlideOneProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-5">
-                        <!-- Progress Bar Container -->
+                    <div id="onboardingSlideOneProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-3">
                         <div id="onboardingSlideOneProgressBarSegmentGroup" class="flex items-center gap-2 flex-1">
-                            <!-- Segment 1: Active (Solid White) -->
                             <button id="onboardingSlideOneProgressSegmentOne" aria-label="Navigate to Screen 1" class="h-1 flex-1 bg-white rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 focus:outline-none"></button>
-                            <!-- Segment 2: Inactive (White 30% Opacity) -->
                             <button id="onboardingSlideOneProgressSegmentTwo" aria-label="Navigate to Screen 2" class="h-1 flex-1 bg-white/30 rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 focus:outline-none"></button>
-                            <!-- Segment 3: Inactive (White 30% Opacity) -->
                             <button id="onboardingSlideOneProgressSegmentThree" aria-label="Navigate to Screen 3" class="h-1 flex-1 bg-white/30 rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 focus:outline-none"></button>
                         </div>
                         
-                        <!-- Skip Link -->
                         <button id="onboardingSlideOneSkipNavigationLink" class="text-white text-xs sm:text-sm font-medium hover:opacity-80 transition-opacity focus:outline-none pl-2">
                             Skip
                         </button>
                     </div>
 
-                    <!-- Row 3: Centered CreoHold Logo & Wordmark -->
-                    <div id="onboardingSlideOneLogoWrapper" class="w-full flex items-center justify-center gap-2 my-1">
+                    <div id="onboardingSlideOneLogoWrapper" class="w-full flex items-center justify-center gap-2 mb-2">
                         <img id="onboardingSlideOneCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]">
                         <span id="onboardingSlideOneCreoHoldLogoText" class="text-white font-bold text-xl sm:text-2xl tracking-tight">CreoHold</span>
                     </div>
                 </header>
 
-                <!-- Center Hero Illustration & Messaging Content Section -->
-                <div id="onboardingSlideOneMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-3 sm:py-4 space-y-4 sm:space-y-5 my-auto">
-                    <!-- Standardized Bounded 3D Hero Graphic Frame -->
-                    <div id="onboardingSlideOneIllustrationFrame" class="w-full h-[200px] sm:h-[220px] flex items-center justify-center my-1 sm:my-2">
-                        <img id="onboardingSlideOneWalletIntroIcon" src="wallet-icon.png.png" onerror="this.onerror=null; this.src='wallet-icon.png.png';" alt="CreoHold Multi-Currency 3D Digital Wallet" class="w-auto h-auto max-w-[210px] sm:max-w-[235px] max-h-[190px] sm:max-h-[210px] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] contrast-[1.06] saturate-[1.1] hover:scale-105 transition-transform duration-300">
+                <!-- Hero illustration and value proposition messaging -->
+                <div id="onboardingSlideOneMainContentHeroSection" class="flex-1 flex flex-col items-center justify-start text-center px-3 sm:px-4 pt-2 space-y-5 sm:space-y-6">
+                    <div id="onboardingSlideOneIllustrationFrame" class="w-full h-[38vh] sm:h-[42vh] flex items-center justify-center">
+                        <img id="onboardingSlideOneWalletIntroIcon" src="wallet-icon.png.png" onerror="this.onerror=null; this.src='wallet-icon.png.png';" alt="CreoHold Multi-Currency 3D Digital Wallet" class="w-auto h-full max-w-[75vw] sm:max-w-[260px] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] contrast-[1.06] saturate-[1.1] hover:scale-105 transition-transform duration-300">
                     </div>
 
-                    <!-- Standardized Typography Group: Headline and Supporting Description -->
-                    <div class="space-y-4 sm:space-y-5 max-w-[310px] min-h-[115px] sm:min-h-[125px] flex flex-col justify-center mx-auto pt-1">
-                        <!-- Headline Title -->
+                    <div class="space-y-3 max-w-[310px] mx-auto">
                         <h1 id="onboardingSlideOneHeadlineTitleText" class="text-white text-2xl sm:text-[28px] font-extrabold leading-[1.25] tracking-tight">
                             One Wallet,<br>Every Currency
                         </h1>
 
-                        <!-- Supporting Description Text -->
-                        <p id="onboardingSlideOneSupportingDescriptionText" class="text-white/90 text-sm sm:text-[14px] font-normal max-w-[280px] leading-relaxed mx-auto pt-1">
+                        <p id="onboardingSlideOneSupportingDescriptionText" class="text-white/90 text-sm sm:text-[14px] font-normal max-w-[280px] leading-relaxed mx-auto">
                             Hold USD, BTC, ETH, and USDT side by side — no juggling apps.
                         </p>
                     </div>
                 </div>
 
-                <!-- Bottom CTA Action Button Footer (Pinned to bottom of mobile viewport) -->
+                <!-- Sticky bottom call-to-action footer -->
                 <footer id="onboardingSlideOneBottomActionFooter" class="w-full pb-8 sm:pb-10 pt-2 mt-auto safe-area-footer">
-                    <!-- Solid Brand Green Action Button (#21b663) -->
                     <button id="onboardingSlideOneContinueActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-3.5 sm:py-4 rounded-[16px] shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center focus:outline-none">
                         Continue
                     </button>
@@ -144,67 +125,54 @@
             </section>
 
 
-            <!-- ==================== SCREEN 2: SWAP AT LIVE MARKET RATES ==================== -->
+            <!-- Screen 2: Swap at Live Market Rates -->
             <section id="onboardingScreenTwoSwapRatesContainer" class="w-full shrink-0 min-w-[100%] h-full min-h-[100dvh] sm:min-h-[720px] flex flex-col justify-between p-6 sm:p-7 relative">
                 
-                <!-- Top Navigation Header -->
-                <header id="onboardingSlideTwoTopHeader" class="w-full pt-2 safe-area-header">
-                    <!-- Row 1: Hamburger Menu Icon (Top Left) -->
-                    <div id="onboardingSlideTwoHamburgerRow" class="flex items-center justify-start mb-2.5">
+                <!-- Top navigation header with progress indicators -->
+                <header id="onboardingSlideTwoTopHeader" class="w-full pt-1 safe-area-header">
+                    <div id="onboardingSlideTwoHamburgerRow" class="flex items-center justify-start mb-1">
                         <div id="onboardingSlideTwoHamburgerMenuIcon" class="text-white p-1 pointer-events-none select-none">
                             <i class="fas fa-bars text-lg sm:text-xl"></i>
                         </div>
                     </div>
 
-                    <!-- Row 2: Segmented Progress Bar + Skip Link -->
-                    <div id="onboardingSlideTwoProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-5">
-                        <!-- Progress Bar Container -->
+                    <div id="onboardingSlideTwoProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-3">
                         <div id="onboardingSlideTwoProgressBarSegmentGroup" class="flex items-center gap-2 flex-1">
-                            <!-- Segment 1: Inactive (White 30% Opacity) -->
                             <button id="onboardingSlideTwoProgressSegmentOne" aria-label="Navigate to Screen 1" class="h-1 flex-1 bg-white/30 rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 focus:outline-none"></button>
-                            <!-- Segment 2: Active (Solid White) -->
                             <button id="onboardingSlideTwoProgressSegmentTwo" aria-label="Navigate to Screen 2" class="h-1 flex-1 bg-white rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 focus:outline-none"></button>
-                            <!-- Segment 3: Inactive (White 30% Opacity) -->
                             <button id="onboardingSlideTwoProgressSegmentThree" aria-label="Navigate to Screen 3" class="h-1 flex-1 bg-white/30 rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 focus:outline-none"></button>
                         </div>
                         
-                        <!-- Skip Link -->
                         <button id="onboardingSlideTwoSkipNavigationLink" class="text-white text-xs sm:text-sm font-medium hover:opacity-80 transition-opacity focus:outline-none pl-2">
                             Skip
                         </button>
                     </div>
 
-                    <!-- Row 3: Centered CreoHold Logo & Wordmark -->
-                    <div id="onboardingSlideTwoLogoWrapper" class="w-full flex items-center justify-center gap-2 my-1">
+                    <div id="onboardingSlideTwoLogoWrapper" class="w-full flex items-center justify-center gap-2 mb-2">
                         <img id="onboardingSlideTwoCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]">
                         <span id="onboardingSlideTwoCreoHoldLogoText" class="text-white font-bold text-xl sm:text-2xl tracking-tight">CreoHold</span>
                     </div>
                 </header>
 
-                <!-- Center Hero Illustration & Messaging Content Section -->
-                <div id="onboardingSlideTwoMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-3 sm:py-4 space-y-4 sm:space-y-5 my-auto">
-                    <!-- Standardized Bounded 3D Hero Graphic Frame -->
-                    <div id="onboardingSlideTwoIllustrationFrame" class="w-full h-[200px] sm:h-[220px] flex items-center justify-center my-1 sm:my-2">
-                        <img id="onboardingSlideTwoSwapRatesIcon" src="swap-coins-icon.png" alt="Crypto and cash swap coins" class="w-auto h-auto max-w-[210px] sm:max-w-[235px] max-h-[190px] sm:max-h-[210px] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] contrast-[1.06] saturate-[1.1] hover:scale-105 transition-transform duration-300 rounded-2xl">
+                <!-- Hero illustration and value proposition messaging -->
+                <div id="onboardingSlideTwoMainContentHeroSection" class="flex-1 flex flex-col items-center justify-start text-center px-3 sm:px-4 pt-2 space-y-5 sm:space-y-6">
+                    <div id="onboardingSlideTwoIllustrationFrame" class="w-full h-[38vh] sm:h-[42vh] flex items-center justify-center">
+                        <img id="onboardingSlideTwoSwapRatesIcon" src="swap-coins-icon.png" alt="Crypto and cash swap coins" class="w-auto h-full max-w-[75vw] sm:max-w-[260px] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] contrast-[1.06] saturate-[1.1] hover:scale-105 transition-transform duration-300 rounded-2xl">
                     </div>
 
-                    <!-- Standardized Typography Group: Headline and Supporting Description -->
-                    <div class="space-y-4 sm:space-y-5 max-w-[310px] min-h-[115px] sm:min-h-[125px] flex flex-col justify-center mx-auto pt-1">
-                        <!-- Headline Title -->
+                    <div class="space-y-3 max-w-[310px] mx-auto">
                         <h1 id="onboardingSlideTwoHeadlineTitleText" class="text-white text-2xl sm:text-[28px] font-extrabold leading-[1.25] tracking-tight">
                             Swap at Live<br>Market Rates
                         </h1>
 
-                        <!-- Supporting Description Text -->
-                        <p id="onboardingSlideTwoSupportingDescriptionText" class="text-white/90 text-sm sm:text-[14px] font-normal max-w-[280px] leading-relaxed mx-auto pt-1">
+                        <p id="onboardingSlideTwoSupportingDescriptionText" class="text-white/90 text-sm sm:text-[14px] font-normal max-w-[280px] leading-relaxed mx-auto">
                             Convert between crypto and cash in seconds, with the rate locked before you confirm.
                         </p>
                     </div>
                 </div>
 
-                <!-- Bottom CTA Action Button Footer (Pinned to bottom of mobile viewport) -->
+                <!-- Sticky bottom call-to-action footer -->
                 <footer id="onboardingSlideTwoBottomActionFooter" class="w-full pb-8 sm:pb-10 pt-2 mt-auto safe-area-footer">
-                    <!-- Solid Brand Green Action Button (#21b663) -->
                     <button id="onboardingSlideTwoContinueActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-3.5 sm:py-4 rounded-[16px] shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center focus:outline-none">
                         Continue
                     </button>
@@ -212,67 +180,54 @@
             </section>
 
 
-            <!-- ==================== SCREEN 3: BUILT TO PROTECT WHAT YOU HOLD ==================== -->
+            <!-- Screen 3: Built to Protect What You Hold -->
             <section id="onboardingScreenThreeSecurityProtectionContainer" class="w-full shrink-0 min-w-[100%] h-full min-h-[100dvh] sm:min-h-[720px] flex flex-col justify-between p-6 sm:p-7 relative">
                 
-                <!-- Top Navigation Header -->
-                <header id="onboardingSlideThreeTopHeader" class="w-full pt-2 safe-area-header">
-                    <!-- Row 1: Hamburger Menu Icon (Top Left) -->
-                    <div id="onboardingSlideThreeHamburgerRow" class="flex items-center justify-start mb-2.5">
+                <!-- Top navigation header with progress indicators -->
+                <header id="onboardingSlideThreeTopHeader" class="w-full pt-1 safe-area-header">
+                    <div id="onboardingSlideThreeHamburgerRow" class="flex items-center justify-start mb-1">
                         <div id="onboardingSlideThreeHamburgerMenuIcon" class="text-white p-1 pointer-events-none select-none">
                             <i class="fas fa-bars text-lg sm:text-xl"></i>
                         </div>
                     </div>
 
-                    <!-- Row 2: Segmented Progress Bar + Skip Link -->
-                    <div id="onboardingSlideThreeProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-5">
-                        <!-- Progress Bar Container -->
+                    <div id="onboardingSlideThreeProgressAndSkipGroup" class="flex items-center justify-between gap-3 w-full mb-3">
                         <div id="onboardingSlideThreeProgressBarSegmentGroup" class="flex items-center gap-2 flex-1">
-                            <!-- Segment 1: Inactive (White 30% Opacity) -->
                             <button id="onboardingSlideThreeProgressSegmentOne" aria-label="Navigate to Screen 1" class="h-1 flex-1 bg-white/30 rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 focus:outline-none"></button>
-                            <!-- Segment 2: Inactive (White 30% Opacity) -->
                             <button id="onboardingSlideThreeProgressSegmentTwo" aria-label="Navigate to Screen 2" class="h-1 flex-1 bg-white/30 rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 focus:outline-none"></button>
-                            <!-- Segment 3: Active (Solid White) -->
                             <button id="onboardingSlideThreeProgressSegmentThree" aria-label="Navigate to Screen 3" class="h-1 flex-1 bg-white rounded-full transition-all duration-300 cursor-pointer hover:opacity-90 focus:outline-none"></button>
                         </div>
                         
-                        <!-- Skip Link -->
                         <button id="onboardingSlideThreeSkipNavigationLink" class="text-white text-xs sm:text-sm font-medium opacity-50 hover:opacity-80 transition-opacity focus:outline-none pl-2">
                             Skip
                         </button>
                     </div>
 
-                    <!-- Row 3: Centered CreoHold Logo & Wordmark -->
-                    <div id="onboardingSlideThreeLogoWrapper" class="w-full flex items-center justify-center gap-2 my-1">
+                    <div id="onboardingSlideThreeLogoWrapper" class="w-full flex items-center justify-center gap-2 mb-2">
                         <img id="onboardingSlideThreeCreoHoldLogoIcon" src="crehold-logo.svg" alt="CreoHold White Logo Icon" class="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]">
                         <span id="onboardingSlideThreeCreoHoldLogoText" class="text-white font-bold text-xl sm:text-2xl tracking-tight">CreoHold</span>
                     </div>
                 </header>
 
-                <!-- Center Hero Illustration & Messaging Content Section -->
-                <div id="onboardingSlideThreeMainContentHeroSection" class="flex-1 flex flex-col items-center justify-center text-center px-3 sm:px-4 py-3 sm:py-4 space-y-4 sm:space-y-5 my-auto">
-                    <!-- Standardized Bounded 3D Hero Graphic Frame -->
-                    <div id="onboardingSlideThreeIllustrationFrame" class="w-full h-[200px] sm:h-[220px] flex items-center justify-center my-1 sm:my-2">
-                        <img id="onboardingScreenThreeShieldIcon" src="shield-check-icon.png" alt="Security shield with checkmark" class="w-auto h-auto max-w-[210px] sm:max-w-[235px] max-h-[190px] sm:max-h-[210px] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] contrast-[1.06] saturate-[1.1] hover:scale-105 transition-transform duration-300 rounded-2xl">
+                <!-- Hero illustration and value proposition messaging -->
+                <div id="onboardingSlideThreeMainContentHeroSection" class="flex-1 flex flex-col items-center justify-start text-center px-3 sm:px-4 pt-2 space-y-5 sm:space-y-6">
+                    <div id="onboardingSlideThreeIllustrationFrame" class="w-full h-[38vh] sm:h-[42vh] flex items-center justify-center">
+                        <img id="onboardingScreenThreeShieldIcon" src="shield-check-icon.png" alt="Security shield with checkmark" class="w-auto h-full max-w-[75vw] sm:max-w-[260px] object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.35)] contrast-[1.06] saturate-[1.1] hover:scale-105 transition-transform duration-300 rounded-2xl">
                     </div>
 
-                    <!-- Standardized Typography Group: Headline and Supporting Description -->
-                    <div class="space-y-4 sm:space-y-5 max-w-[310px] min-h-[115px] sm:min-h-[125px] flex flex-col justify-center mx-auto pt-1">
-                        <!-- Headline Title -->
+                    <div class="space-y-3 max-w-[310px] mx-auto">
                         <h1 id="onboardingSlideThreeHeadlineTitleText" class="text-white text-2xl sm:text-[28px] font-extrabold leading-[1.25] tracking-tight">
                             Built to Protect<br>What You Hold
                         </h1>
 
-                        <!-- Supporting Description Text -->
-                        <p id="onboardingSlideThreeSupportingDescriptionText" class="text-white/90 text-sm sm:text-[14px] font-normal max-w-[280px] leading-relaxed mx-auto pt-1">
+                        <p id="onboardingSlideThreeSupportingDescriptionText" class="text-white/90 text-sm sm:text-[14px] font-normal max-w-[280px] leading-relaxed mx-auto">
                             Biometric login, 2FA, and device-level encryption on every transaction.
                         </p>
                     </div>
                 </div>
 
-                <!-- Bottom CTA Action Button Footer (Pinned to bottom of mobile viewport) -->
+                <!-- Sticky bottom call-to-action footer -->
                 <footer id="onboardingSlideThreeBottomActionFooter" class="w-full pb-8 sm:pb-10 pt-2 mt-auto safe-area-footer">
-                    <!-- Solid Brand Green Action Button (#21b663) -->
                     <button id="onboardingSlideThreeGetStartedActionButton" class="w-full bg-[#21b663] hover:bg-[#1ca156] active:scale-[0.98] text-white font-semibold text-base py-3.5 sm:py-4 rounded-[16px] shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center focus:outline-none">
                         Get Started
                     </button>
@@ -283,28 +238,21 @@
 
     </main>
 
-    <!-- Vanilla Javascript Logic for Slide Navigation, Clickable Progress Bar & Touch Swipe -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             
-            // State tracking variable for current active slide index (0, 1, or 2)
             let currentActiveSlideIndex = 0;
             const totalOnboardingSlidesCount = 3;
 
-            // DOM Element References with self-documenting descriptive names
             const onboardingCarouselSlidesTrack = document.getElementById('onboardingCarouselSlidesTrack');
-            
-            // Continue Action Buttons
             const onboardingSlideOneContinueActionButton = document.getElementById('onboardingSlideOneContinueActionButton');
             const onboardingSlideTwoContinueActionButton = document.getElementById('onboardingSlideTwoContinueActionButton');
             const onboardingSlideThreeGetStartedActionButton = document.getElementById('onboardingSlideThreeGetStartedActionButton');
 
-            // Skip Navigation Links
             const onboardingSlideOneSkipNavigationLink = document.getElementById('onboardingSlideOneSkipNavigationLink');
             const onboardingSlideTwoSkipNavigationLink = document.getElementById('onboardingSlideTwoSkipNavigationLink');
             const onboardingSlideThreeSkipNavigationLink = document.getElementById('onboardingSlideThreeSkipNavigationLink');
 
-            // Progress Bar Segments Collections (Screen 1, Screen 2, Screen 3)
             const allProgressSegmentsScreenOne = [
                 document.getElementById('onboardingSlideOneProgressSegmentOne'),
                 document.getElementById('onboardingSlideOneProgressSegmentTwo'),
@@ -321,10 +269,15 @@
                 document.getElementById('onboardingSlideThreeProgressSegmentThree')
             ];
 
-            /**
-             * Updates the progress bar visual segments state across all 3 screens
-             * @param {number} activeIndex 
-             */
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let currentDeltaX = 0;
+            let currentDeltaY = 0;
+            let isDragging = false;
+            let isHorizontalSwipe = null;
+            let isMouseDown = false;
+
+            // Updates the visual active and inactive opacity states across progress segments on all screens
             function updateProgressBarVisualState(activeIndex) {
                 const screenGroups = [
                     allProgressSegmentsScreenOne,
@@ -346,27 +299,20 @@
                 });
             }
 
-            /**
-             * Navigates directly to the target onboarding slide index (0, 1, or 2)
-             * @param {number} targetSlideIndex 
-             */
+            // Navigates directly to the specified slide index and applies the horizontal translation offset
             function navigateToOnboardingSlideIndex(targetSlideIndex) {
                 if (targetSlideIndex < 0 || targetSlideIndex >= totalOnboardingSlidesCount) return;
                 
                 currentActiveSlideIndex = targetSlideIndex;
                 const percentageTranslateOffset = -(targetSlideIndex * 100);
                 
-                // Re-enable smooth transition animation when snapping to slide
                 onboardingCarouselSlidesTrack.style.transition = 'transform 350ms cubic-bezier(0.25, 1, 0.5, 1)';
                 onboardingCarouselSlidesTrack.style.transform = `translateX(${percentageTranslateOffset}%)`;
 
-                // Update active/inactive state of progress bar segments across all screen headers
                 updateProgressBarVisualState(targetSlideIndex);
             }
 
-            /**
-             * Advance to the next slide in sequence
-             */
+            // Advances the carousel to the next slide in sequence
             function advanceToNextOnboardingSlide() {
                 if (currentActiveSlideIndex < totalOnboardingSlidesCount - 1) {
                     navigateToOnboardingSlideIndex(currentActiveSlideIndex + 1);
@@ -375,86 +321,19 @@
                 }
             }
 
-            /**
-             * Jump directly to the final slide (Screen 3)
-             */
+            // Jumps directly to the final onboarding slide
             function skipToFinalOnboardingSlide() {
                 navigateToOnboardingSlideIndex(2);
             }
 
-            // Bind Click Events to Top Progress Bar Segments across all 3 screens
-            const screenSegmentsTuples = [
-                allProgressSegmentsScreenOne,
-                allProgressSegmentsScreenTwo,
-                allProgressSegmentsScreenThree
-            ];
-
-            screenSegmentsTuples.forEach(segmentsGroup => {
-                segmentsGroup.forEach((segmentElement, targetIndex) => {
-                    if (segmentElement) {
-                        segmentElement.addEventListener('click', function () {
-                            navigateToOnboardingSlideIndex(targetIndex);
-                        });
-                    }
-                });
-            });
-
-            // Event Listeners for "Continue" & "Get Started" Buttons
-            if (onboardingSlideOneContinueActionButton) {
-                onboardingSlideOneContinueActionButton.addEventListener('click', advanceToNextOnboardingSlide);
-            }
-            if (onboardingSlideTwoContinueActionButton) {
-                onboardingSlideTwoContinueActionButton.addEventListener('click', advanceToNextOnboardingSlide);
-            }
-            if (onboardingSlideThreeGetStartedActionButton) {
-                onboardingSlideThreeGetStartedActionButton.addEventListener('click', function () {
-                    console.log('Get Started button clicked.');
-                });
-            }
-
-            // Event Listeners for "Skip" Links
-            if (onboardingSlideOneSkipNavigationLink) {
-                onboardingSlideOneSkipNavigationLink.addEventListener('click', skipToFinalOnboardingSlide);
-            }
-            if (onboardingSlideTwoSkipNavigationLink) {
-                onboardingSlideTwoSkipNavigationLink.addEventListener('click', skipToFinalOnboardingSlide);
-            }
-            if (onboardingSlideThreeSkipNavigationLink) {
-                onboardingSlideThreeSkipNavigationLink.addEventListener('click', skipToFinalOnboardingSlide);
-            }
-
-            // Keyboard Arrow Key Navigation (Left / Right)
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'ArrowRight' || e.key === 'Enter') {
-                    advanceToNextOnboardingSlide();
-                } else if (e.key === 'ArrowLeft') {
-                    if (currentActiveSlideIndex > 0) {
-                        navigateToOnboardingSlideIndex(currentActiveSlideIndex - 1);
-                    }
-                }
-            });
-
-            // ==================== LIVE INTERACTIVE SWIPE & DRAG CONTROLLER ====================
-            let touchStartX = 0;
-            let touchStartY = 0;
-            let currentDeltaX = 0;
-            let currentDeltaY = 0;
-            let isDragging = false;
-            let isHorizontalSwipe = null; // null = undetermined, true = horizontal, false = vertical
-
-            // Prevent native image dragging interference
-            const allCarouselImages = onboardingCarouselSlidesTrack.querySelectorAll('img');
-            allCarouselImages.forEach(img => {
-                img.addEventListener('dragstart', function (e) { e.preventDefault(); });
-            });
-
+            // Calculates current viewport track width for gesture translation
             function getTrackWidth() {
                 const viewportFrame = document.getElementById('onboardingMobileDeviceViewportFrame');
                 return viewportFrame ? viewportFrame.offsetWidth : window.innerWidth;
             }
 
-            // --- TOUCH EVENT HANDLERS ---
-            onboardingCarouselSlidesTrack.addEventListener('touchstart', function (e) {
+            // Handles touch start event to initialize touch gesture tracking
+            function handleTouchStart(e) {
                 if (e.touches && e.touches.length > 1) return;
                 
                 isDragging = true;
@@ -464,11 +343,11 @@
                 currentDeltaX = 0;
                 currentDeltaY = 0;
 
-                // Disable CSS transition during finger drag for 1:1 instantaneous response
                 onboardingCarouselSlidesTrack.style.transition = 'none';
-            }, { passive: true });
+            }
 
-            onboardingCarouselSlidesTrack.addEventListener('touchmove', function (e) {
+            // Handles touch move event to drag carousel track horizontally with finger
+            function handleTouchMove(e) {
                 if (!isDragging) return;
 
                 const currentX = e.touches[0].clientX;
@@ -476,7 +355,6 @@
                 currentDeltaX = currentX - touchStartX;
                 currentDeltaY = currentY - touchStartY;
 
-                // Lock gesture direction on initial movement threshold
                 if (isHorizontalSwipe === null) {
                     const absX = Math.abs(currentDeltaX);
                     const absY = Math.abs(currentDeltaY);
@@ -485,13 +363,11 @@
                     }
                 }
 
-                // If horizontal swipe, follow finger in real-time
                 if (isHorizontalSwipe === true) {
                     const trackWidth = getTrackWidth();
-                    let baseTranslatePx = -(currentActiveSlideIndex * trackWidth);
+                    const baseTranslatePx = -(currentActiveSlideIndex * trackWidth);
                     let targetTranslatePx = baseTranslatePx + currentDeltaX;
 
-                    // Rubber-band resistance on boundary edges
                     if (currentActiveSlideIndex === 0 && currentDeltaX > 0) {
                         targetTranslatePx = baseTranslatePx + (currentDeltaX * 0.3);
                     } else if (currentActiveSlideIndex === totalOnboardingSlidesCount - 1 && currentDeltaX < 0) {
@@ -500,25 +376,10 @@
 
                     onboardingCarouselSlidesTrack.style.transform = `translateX(${targetTranslatePx}px)`;
                 }
-            }, { passive: true });
+            }
 
-            onboardingCarouselSlidesTrack.addEventListener('touchend', function () {
-                if (!isDragging) return;
-                isDragging = false;
-                finishSwipeGesture();
-            }, { passive: true });
-
-            onboardingCarouselSlidesTrack.addEventListener('touchcancel', function () {
-                if (!isDragging) return;
-                isDragging = false;
-                finishSwipeGesture();
-            }, { passive: true });
-
-
-            // --- MOUSE DRAG HANDLERS (DESKTOP TESTING) ---
-            let isMouseDown = false;
-
-            onboardingCarouselSlidesTrack.addEventListener('mousedown', function (e) {
+            // Handles mouse down event for desktop drag simulation
+            function handleMouseDown(e) {
                 if (e.target.closest('button, a')) return;
                 
                 isMouseDown = true;
@@ -529,16 +390,17 @@
                 currentDeltaY = 0;
 
                 onboardingCarouselSlidesTrack.style.transition = 'none';
-            });
+            }
 
-            document.addEventListener('mousemove', function (e) {
+            // Handles mouse move event to update drag position during mouse drag
+            function handleMouseMove(e) {
                 if (!isMouseDown) return;
 
                 currentDeltaX = e.clientX - touchStartX;
                 currentDeltaY = e.clientY - touchStartY;
 
                 const trackWidth = getTrackWidth();
-                let baseTranslatePx = -(currentActiveSlideIndex * trackWidth);
+                const baseTranslatePx = -(currentActiveSlideIndex * trackWidth);
                 let targetTranslatePx = baseTranslatePx + currentDeltaX;
 
                 if (currentActiveSlideIndex === 0 && currentDeltaX > 0) {
@@ -548,33 +410,22 @@
                 }
 
                 onboardingCarouselSlidesTrack.style.transform = `translateX(${targetTranslatePx}px)`;
-            });
+            }
 
-            document.addEventListener('mouseup', function () {
-                if (!isMouseDown) return;
-                isMouseDown = false;
-                finishSwipeGesture();
-            });
-
-
-            // --- FINISH GESTURE DECISION LOGIC ---
+            // Evaluates swipe gesture drag distance to transition to next slide or snap back
             function finishSwipeGesture() {
                 const trackWidth = getTrackWidth();
                 const swipeThreshold = Math.min(trackWidth * 0.18, 50);
 
                 if (isHorizontalSwipe === true && Math.abs(currentDeltaX) > swipeThreshold) {
                     if (currentDeltaX < 0 && currentActiveSlideIndex < totalOnboardingSlidesCount - 1) {
-                        // Swiped Left -> Advance to next slide
                         navigateToOnboardingSlideIndex(currentActiveSlideIndex + 1);
                     } else if (currentDeltaX > 0 && currentActiveSlideIndex > 0) {
-                        // Swiped Right -> Return to previous slide
                         navigateToOnboardingSlideIndex(currentActiveSlideIndex - 1);
                     } else {
-                        // Snap back on edge boundary
                         navigateToOnboardingSlideIndex(currentActiveSlideIndex);
                     }
                 } else {
-                    // Small drag -> Snap back to active slide
                     navigateToOnboardingSlideIndex(currentActiveSlideIndex);
                 }
 
@@ -583,6 +434,86 @@
                 isHorizontalSwipe = null;
             }
 
+            // Handles touch end and touch cancel events
+            function handleTouchEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                finishSwipeGesture();
+            }
+
+            // Handles mouse up event to finalize mouse drag
+            function handleMouseUp() {
+                if (!isMouseDown) return;
+                isMouseDown = false;
+                finishSwipeGesture();
+            }
+
+            // Attaches click, touch, mouse, and keyboard event listeners
+            function setupEventListeners() {
+                const allSegmentGroups = [
+                    allProgressSegmentsScreenOne,
+                    allProgressSegmentsScreenTwo,
+                    allProgressSegmentsScreenThree
+                ];
+
+                allSegmentGroups.forEach(segmentsGroup => {
+                    segmentsGroup.forEach((segmentElement, targetIndex) => {
+                        if (segmentElement) {
+                            segmentElement.addEventListener('click', function () {
+                                navigateToOnboardingSlideIndex(targetIndex);
+                            });
+                        }
+                    });
+                });
+
+                if (onboardingSlideOneContinueActionButton) {
+                    onboardingSlideOneContinueActionButton.addEventListener('click', advanceToNextOnboardingSlide);
+                }
+                if (onboardingSlideTwoContinueActionButton) {
+                    onboardingSlideTwoContinueActionButton.addEventListener('click', advanceToNextOnboardingSlide);
+                }
+                if (onboardingSlideThreeGetStartedActionButton) {
+                    onboardingSlideThreeGetStartedActionButton.addEventListener('click', function () {
+                        console.log('Get Started button clicked.');
+                    });
+                }
+
+                if (onboardingSlideOneSkipNavigationLink) {
+                    onboardingSlideOneSkipNavigationLink.addEventListener('click', skipToFinalOnboardingSlide);
+                }
+                if (onboardingSlideTwoSkipNavigationLink) {
+                    onboardingSlideTwoSkipNavigationLink.addEventListener('click', skipToFinalOnboardingSlide);
+                }
+                if (onboardingSlideThreeSkipNavigationLink) {
+                    onboardingSlideThreeSkipNavigationLink.addEventListener('click', skipToFinalOnboardingSlide);
+                }
+
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'ArrowRight' || e.key === 'Enter') {
+                        advanceToNextOnboardingSlide();
+                    } else if (e.key === 'ArrowLeft') {
+                        if (currentActiveSlideIndex > 0) {
+                            navigateToOnboardingSlideIndex(currentActiveSlideIndex - 1);
+                        }
+                    }
+                });
+
+                const allCarouselImages = onboardingCarouselSlidesTrack.querySelectorAll('img');
+                allCarouselImages.forEach(img => {
+                    img.addEventListener('dragstart', function (e) { e.preventDefault(); });
+                });
+
+                onboardingCarouselSlidesTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
+                onboardingCarouselSlidesTrack.addEventListener('touchmove', handleTouchMove, { passive: true });
+                onboardingCarouselSlidesTrack.addEventListener('touchend', handleTouchEnd, { passive: true });
+                onboardingCarouselSlidesTrack.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+
+                onboardingCarouselSlidesTrack.addEventListener('mousedown', handleMouseDown);
+                document.addEventListener('mousemove', handleMouseMove);
+                document.addEventListener('mouseup', handleMouseUp);
+            }
+
+            setupEventListeners();
         });
     </script>
 </body>
